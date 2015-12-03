@@ -20,12 +20,12 @@
     "url": "https://github.com/CoreyCole/info343-final-project/issues"
   },
   "homepage": "https://github.com/CoreyCole/info343-final-project#readme",
-  "devDependencies": {å
+  "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-angular-protractor": "0.0.6",
     "gulp-connect": "^2.2.0",
-    "gulp-minify-html": "^1.0.4",å
+    "gulp-minify-html": "^1.0.4",
     "gulp-sass": "^2.1.0",
-    "gulp-uglify": "^1.5.1",
+    "gulp-uglify": "^1.5.1"
   }
 }
