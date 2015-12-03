@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- AngularJS -->
-	<script src="/node_modules/angular/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
     <!-- Font awesome icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -15,11 +21,11 @@
     <!-- Material design icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-	<!-- Angular Material style sheet -->
-	<link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+    <!-- Angular Material CSS now available via Google CDN; version 0.11.2 used here -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
 
     <!-- Main css file -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="IndexCtrl">
 	<div class="navbar navbar-default" role="navigation">
@@ -81,10 +87,18 @@
         ga('send', 'pageview');
     </script>
 
-	<script src="/node_modules/angular/angular.js"></script>
-	<script src="/node_modules/angular-aria/angular-aria.js"></script>
-	<script src="/node_modules/angular-animate/angular-animate.js"></script>
-	<script src="/node_modules/angular-material/angular-material.js"></script>
+    <!-- app javascript -->
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/cart-controller.js"></script>
+    <script src="js/index-controller.js"></script>
+    <script src="js/ingredients-info-controller.js"></script>
+    <script src="js/main-controller.js"></script>
+    <script src="js/menu-controller.js"></script>
+    <script src="js/menu-item-info-controller.js"></script>
+    <script src="js/order-confirm-controller.js"></script>
+    <script src="js/restaurant-profile-controller.js"></script>
+    <script src="js/search-results-controller.js"></script>
 
 </body>
 </html>

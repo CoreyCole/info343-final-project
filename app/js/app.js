@@ -12,8 +12,7 @@ angular.module('bellhappApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase',
-    'firebase.ref',
-    'firebase.auth',
+    'angularfire',
+    'Firebase',
     'ngMaterial'
 ]);
