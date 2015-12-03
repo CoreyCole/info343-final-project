@@ -1,27 +1,31 @@
 'use strict';
 
 /**
- * Angular ui routes file
+ * Angular ui.router file
  */
 angular.module('bellhappApp')
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider
-            .when('/', {
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('main', {
+                url: '/',
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/search/:location/:food/:name', {
+            .state('search-results', {
+                url: '/search/:location/:food/:name',
                 templateUrl: 'views/search-results.html',
                 controller: 'SearchResultsCtrl'
             })
-            .when('/restaurant/:id', {
+            .state('restaurant-profile', {
+                url: '/restaurant/:id',
                 templateUrl: 'views/restaurant-profile.html',
                 controller: 'RestaurantProfileCtrl'
             })
-            .when('/menu/:id', {
+            .state('menu', {
+                url: '/menu/:id',
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
-            })
+            });
 
-            .otherwise({redirectTo: '/'});
-    }])
+        $urlRouterProvider.otherwise('/');
+    });
