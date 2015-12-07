@@ -17,14 +17,19 @@ angular.module('bellhappApp')
                 controller: 'SearchResultsCtrl'
             })
             .state('restaurant-profile', {
-                url: '/restaurant/:id',
+                url: '/restaurant/:restaurantid',
                 templateUrl: 'views/restaurant-profile.html',
                 controller: 'RestaurantProfileCtrl'
             })
             .state('menu', {
-                url: '/menu/:id',
+                url: '/menu/:restaurantid',
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
+            })
+            .state('tablet', {
+                url: '/tablet/:restaurantid',
+                templateUrl: 'views/tablet.html',
+                controller: 'TabletCtrl'
             });
 
         $urlRouterProvider.otherwise('/');
