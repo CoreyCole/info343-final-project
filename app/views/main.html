@@ -7,33 +7,33 @@
             <md-autocomplete md-selected-item="selectedLocation"
                              md-search-text="locationSearchText"
                              md-items="item in getLocationMatches(locationSearchText)"
-                             md-item-text="item.display"
+                             md-item-text="item"
                              placeholder="location">
-                <span md-highlight-text="locationSearchText">{{item.display}}</span>
+                <span md-highlight-text="locationSearchText">{{item}}</span>
             </md-autocomplete>
         </div>
         <div class="container">
             <md-autocomplete md-selected-item="selectedFood"
                              md-search-text="foodSearchText"
                              md-items="item in getFoodMatches(foodSearchText)"
-                             md-item-text="item.display"
+                             md-item-text="item"
                              placeholder="food">
-                <span md-highlight-text="foodSearchText">{{item.display}}</span>
+                <span md-highlight-text="foodSearchText">{{item}}</span>
             </md-autocomplete>
         </div>
         <div class="container">
             <md-autocomplete md-selected-item="selectedName"
                              md-search-text="nameSearchText"
                              md-items="item in getNameMatches(nameSearchText)"
-                             md-item-text="item.display"
+                             md-item-text="item"
                              placeholder="name">
-                <span md-highlight-text="nameSearchText">{{item.display}}</span>
+                <span md-highlight-text="nameSearchText">{{item}}</span>
             </md-autocomplete>
         </div>
     </section>
     <section class="buttons">
         <md-button class="md-raised md-primary"
-                   ng-click="search()"
+                   ng-click="search(selectedLocation, selectedFood, selectedName)"
                    layout="column">
             Search
         </md-button>
