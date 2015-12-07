@@ -1,0 +1,34 @@
+<div class="tablet container" ng-controller="TabletCtrl">
+    <div class="tables">
+        <h1>Tables</h1>
+        <div class="table-data">
+            <div class="table" ng-repeat="table in tables"
+                 ng-style="{left: {{table.x}} + 'px',
+                            top: {{table.y}} + 'px',
+                            'background-color': '{{table.color}}' }"
+                 class="table-data-tables">
+                <p class="table-number">
+                    {{table.number}}
+                </p>
+                <p class="signal-icon">
+                    <i ng-show="table.signal" class="fa fa-bell"></i>
+                </p>
+                <p class="drinks-icon">
+                    <i ng-show="table.drinks" class="fa fa-beer"></i>
+                </p>
+                <p class="check-icon">
+                    <i ng-show="table.check" class="fa fa-money"></i>
+                </p>
+                <p class="notifications" ng-show="table.notifications > 0">{{table.notifications}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="feed">
+        <h1>Feed</h1>
+        <div class="feed-data">
+            <div class="feed-item" ng-repeat="item in feed">
+                table {{item.tableNum}} signaled for {{item.data}}
+            </div>
+        </div>
+    </div>
+</div>

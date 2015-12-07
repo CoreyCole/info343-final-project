@@ -1,0 +1,69 @@
+.tablet {
+  width: 100%;
+  overflow: auto;
+
+  .tables {
+    float: left;
+    width: 70%
+  }
+
+  .feed {
+    float: right;
+  }
+
+  .table-data {
+    position: relative;
+    width: 70%;
+    height: 650px;
+    box-sizing: border-box;
+  }
+
+  .table {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin: 0;
+    background-opacity: 0.2;
+    font-family: 'Lato';
+    color: white;
+  }
+
+  .table-number {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 13px;
+    left: 18px;
+  }
+
+  .signal-icon {
+    color: red;
+    position: absolute;
+    top: -10px;
+  }
+
+  .drinks-icon {
+    color: red;
+    position: absolute;
+    top: 40px;
+  }
+
+  .check-icon {
+    color: red;
+    position: absolute;
+    top: 40px;
+    left: 40px
+  }
+
+  .notifications {
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    color: white;
+    background-color: red;
+    border-radius: 100px;
+    border: 1px solid red;
+  }
+}
