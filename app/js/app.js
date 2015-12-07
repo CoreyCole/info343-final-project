@@ -8,4 +8,4 @@ angular.module('bellhappApp', [
         'firebase',
         'ngMaterial'
     ])
-    .constant('firebaseUrl', 'https://info343-final.firebaseio.com/');
+    .constant('firebaseUrl', 'https://info343-final.firebaseio.com/')
