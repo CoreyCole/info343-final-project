@@ -4,6 +4,6 @@
  * # MainCtrl
  */
 angular.module('bellhappApp')
-    .controller('MainCtrl', function ($scope) {
-
+    .controller('MainCtrl', function ($scope, brand) {
+        $scope.brand = brand;
     });
