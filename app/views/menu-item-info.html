@@ -1,13 +1,13 @@
 <div class="menu-item-info" ng-controller="MenuItemInfoCtrl" ng-cloak>
     <md-content>
 	    <md-list>
-		    <md-list-item class="col-md-9 col-md-offset-2" ng-repeat="item in todos">
+		    <md-list-item class="col-md-9 col-md-offset-2" ng-repeat="item in products">
 			    <div layout="column" layout-align="center">
 			    	<md-subheader class="md-no-sticky">restaraunt.name</md-subheader>
 			    	<div class="md-list-item-text" layout="row" layout-align="center left">
 		        		<h1> {{ item.name }} </h1>
 		        		<div id="price" class="md-list-item-text">
-		        		<h2> $3.99 </h2>
+		        		<h2> ${{item.price}} </h2>
 		        	</div>
 		        	</div>
 		        	<div class="md-list-item-text" layout="row" layout-align="center left">
@@ -33,7 +33,7 @@
 			       			<md-button class="md-accent md-raised md-hue-1" name="favBtn">Favorite</md-button>
 			       		</div>
 			       		<div class="col-xs-6 col-sm-4">
-				       		<md-button class="md-raised md-warn" name="addBtn">Add</md-button>
+				       		<md-button class="md-raised md-warn" ng-click="addMenuItem(item.name, item.price, 1, topping.wanted)" >Add</md-button>
 			       		</div>
 			       	</section>
 		        </div> 
