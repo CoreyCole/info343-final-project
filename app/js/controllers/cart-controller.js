@@ -7,7 +7,7 @@
  * -add ability to change the quantity of item
  * -
  */
-angular.module('bellhappApp', ['firebase'])
+angular.module('bellhappApp')
     .controller('CartCtrl', function ($scope, firebaseUrl, $firebaseArray, rootRef) {
         //eventually adding the cart to the list of orders in firebase
         $scope.orders = $firebaseArray(rootRef);

@@ -1,7 +1,11 @@
 @import 'base';
 
 .menu {
-  h1 {
-    color: $primary-color;
+  .md-3-line {
+    padding: 10px;
+  }
+
+  .md-primary {
+    margin-top: 10px;
   }
 }
