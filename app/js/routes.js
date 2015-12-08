@@ -33,7 +33,7 @@ angular.module('bellhappApp')
             })
             .state('cart', {
                 url: '/cart',
-                templateUrl: 'views/cart.html',
+                    templateUrl: 'views/cart.html',
                 controller: 'CartCtrl'
             });
 
