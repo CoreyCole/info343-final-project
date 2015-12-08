@@ -1,0 +1,78 @@
+.tablet {
+  width: 100%;
+  overflow: auto;
+
+  .tables {
+    float: left;
+    width: 70%;
+  }
+
+  .feed {
+    float: right;
+    width: 30%;
+  }
+
+  .table-data {
+    width: 100%;
+    height: 650px;
+    box-sizing: border-box;
+  }
+
+  .table {
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+    font-family: 'Lato';
+    color: white;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .table-number {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 14px;
+    font-size: 24px;
+  }
+
+  .signal-icon {
+    color: red;
+    position: absolute;
+    top: -10px;
+  }
+
+  .drinks-icon {
+    color: red;
+    position: absolute;
+    top: 40px;
+  }
+
+  .check-icon {
+    color: red;
+    position: absolute;
+    top: 40px;
+    left: 40px
+  }
+
+  .notifications {
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    color: white;
+    background-color: red;
+    border-radius: 100px;
+    border: 1px solid red;
+  }
+
+  .close-alert-btn {
+    float: right;
+    margin-left: 10px;
+  }
+
+  md-toolbar {
+    margin-bottom: 15px;
+  }
+}

@@ -1,3 +1,24 @@
 <div class="menu" ng-controller="MenuCtrl">
+<<<<<<< HEAD
     <h1>menu</h1>
 </div> 
+=======
+    <md-toolbar class="md-theme-light" ng-click="populate1()">
+        <h1 class="md-toolbar-tools">
+            <span>{{restaurant.name}} Menu</span>
+        </h1>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in restaurant.menu">
+                <div class="md-list-item-text">
+                    <h3>{{item.name}}</h3>
+                    <p>{{item.description}}</p>
+                </div>
+                <md-button class="md-raised md-primary"><span class="badge">${{item.price}}</span> Order</md-button>
+                <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
+>>>>>>> 7127328601b65f3f1cbf842026142eaa6022bfbf
