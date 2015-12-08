@@ -30,7 +30,13 @@ angular.module('bellhappApp')
                 url: '/tablet/:restaurantid',
                 templateUrl: 'views/tablet.html',
                 controller: 'TabletCtrl'
+            })
+            .state('cart', {
+                url: '/cart',
+                templateUrl: 'views/cart.html',
+                controller: 'CartCtrl'
             });
+
 
         $urlRouterProvider.otherwise('/');
     });
