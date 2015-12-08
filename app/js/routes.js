@@ -38,7 +38,7 @@ angular.module('bellhappApp')
             })
             .state('order-confirm', {
                 url: '/cart/order-confirm',
-                templateUrl: 'views/cart.html',
+                templateUrl: 'views/order-confirm.html',
                 controller: 'OrderConfirmCtrl'
             });
 
