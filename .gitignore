@@ -4,3 +4,5 @@ bower_components
 .idea
 /app/index.html
 dist
+.DS_Store
+app/.DS_Store
