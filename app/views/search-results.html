@@ -1,3 +1,22 @@
-<div class="search-results" ng-controller="SearchResultsCtrl">
-
+<div class="search-results" ng-controller="SearchResultsCtrl" ng-cloak>
+    <md-toolbar class="md-warn" ng-show="errorMessage">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">{{errorMessage}}</h2>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <md-card ng-repeat="restaurant in results"
+                ng-show="restaurant.show">
+            <!--<img ng-src="{{restaurant.pictureUrl}}" class="md-card-image" alt="Washed Out">-->
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{restaurant.name}}</span>
+                    <span class="md-subhead">{{restaurant.food}} Restaurant</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>{{restaurant.description}}</p>
+            </md-card-content>
+        </md-card>
+    </md-content>
 </div>

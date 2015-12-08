@@ -1,5 +1,11 @@
 @import 'base';
 
 .search-results {
+  md-card-title {
+    padding: 5px;
+  }
 
+  .md-subhead {
+    color: #b3b3b3;
+  }
 }
