@@ -6,7 +6,7 @@
             </h1>
         </md-toolbar>
         <div class="table-data">
-            <div class="table" ng-repeat="table in tables"
+            <md-button class="md-fab md-primary table" ng-repeat="table in tables"
                  ng-style="{left: {{table.x}} + 'px',
                             top: {{table.y}} + 'px',
                             'background-color': '{{table.color}}' }"
@@ -24,7 +24,7 @@
                     <i ng-show="table.check" class="fa fa-money"></i>
                 </p>
                 <p class="notifications" ng-show="table.notifications > 0">{{table.notifications}}</p>
-            </div>
+            </md-button>
         </div>
     </div>
     <div class="feed">
