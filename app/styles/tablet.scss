@@ -9,6 +9,7 @@
 
   .feed {
     float: right;
+    width: 30%;
   }
 
   .table-data {
@@ -65,5 +66,14 @@
     background-color: red;
     border-radius: 100px;
     border: 1px solid red;
+  }
+
+  .close-alert-btn {
+    float: right;
+    margin-left: 10px;
+  }
+
+  md-toolbar {
+    margin-bottom: 15px;
   }
 }

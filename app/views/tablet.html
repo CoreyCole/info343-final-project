@@ -1,6 +1,10 @@
-<div class="tablet container" ng-controller="TabletCtrl">
+<div class="tablet" ng-controller="TabletCtrl">
     <div class="tables">
-        <h1>Tables</h1>
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">
+                <span>Tables</span>
+            </h1>
+        </md-toolbar>
         <div class="table-data">
             <div class="table" ng-repeat="table in tables"
                  ng-style="{left: {{table.x}} + 'px',
@@ -24,11 +28,21 @@
         </div>
     </div>
     <div class="feed">
-        <h1>Feed</h1>
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">
+                <span>Feed</span>
+            </h1>
+        </md-toolbar>
         <div class="feed-data">
-            <div class="feed-item" ng-repeat="item in feed">
-                table {{item.tableNum}} signaled for {{item.data}}
+            <div class="feed-item" ng-repeat="item in feed" ng-show="!item.closed">
+                <div class="alert {{item.alertType}}" role="alert">
+                    Table {{item.tableNum}} signaled for {{item.data}}!
+                    <div class="close-alert-btn" ng-click="dismiss(item)">
+                        <i class="fa fa-times fa-lg"></i>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
