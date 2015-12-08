@@ -1,9 +1,18 @@
 @import 'base';
 
-.cart {
+md-toolbar{
+  span{
+    font-size: 30px;
+  }
 
+  h4{
+    font-size: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
-#quantity{
-  border-style: none;
+#confirm-btn{
+  position: relative;
+  text-align: right;
 }

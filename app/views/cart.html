@@ -1,34 +1,17 @@
 <div class="cart" ng-controller="CartCtrl">
-    <h1>Food Cart!</h1>
-    <h3>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h3>
+    <!--<h1>Food Cart!</h1>-->
+    <!--<h3>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h3>-->
 
-    <!--<md-toolbar class="md-theme-light">-->
-        <!--<h2 class="md-toolbar-tools">-->
-            <!--<span>Food Cart!</span>-->
-        <!--</h2>-->
-        <!--<h4>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h4>-->
-    <!--</md-toolbar>-->
-
-    <!--<md-content>-->
-        <!--<md-list>-->
-            <!--<md-list-item class="md-3-line" ng-repeat="item in cart">-->
-                <!--<div class="md-list-item-text">-->
-                    <!--<h3>{{item.name}}</h3>-->
-                    <!--<h4>{{item.quantity}}</h4>-->
-                    <!--<p>{{item.price}}</p>-->
-                <!--</div>-->
-                <!--<md-button class="md-secondary">Respond</md-button>-->
-                <!--<md-divider ng-if="!$last"></md-divider>-->
-            <!--</md-list-item>-->
-        <!--</md-list>-->
-    <!--</md-content>-->
+    <md-toolbar class="md-theme-light">
+        <h2 class="md-toolbar-tools">
+            <span>Food Cart!</span>
+        </h2>
+        <h4 id="description">These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h4>
+    </md-toolbar>
 
 
-
-
-    <div class="col-md-6" id="cart">
+    <div class="cart">
         <table class="table" id="cart-list">
-            <h1>Your Cart</h1>
             <thead>
             <tr>
                 <th> </th>
@@ -51,9 +34,9 @@
 
     </div>
 
-    <button id="confirm-btn" type="submit" class="md-raised md-primary"
-            ui-sref="order-confirm" ng-click="saveOrder()" >
-            Confirm order!
-    </button>
+    <md-button id="confirm-btn" type="submit" class="md-raised md-primary"
+            ui-sref="order-confirm" ng-click="saveOrder()">
+            Confirm order
+    </md-button>
 
 </div>
