@@ -25,6 +25,16 @@ angular.module('bellhappApp')
                 url: '/menu/:id',
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
+            })
+            .state('menu-item-info', {
+                url: '/menu-item-info/:id',
+                templateUrl: 'views/menu-item-info.html',
+                controller: 'MenuItemInfoCtrl'
+            })
+            .state('ingredients-info', {
+                url: '/ingredients-info/:id',
+                templateUrl: 'views/ingredients-info.html',
+                controller: 'IngredientsInfoCtrl'
             });
 
         $urlRouterProvider.otherwise('/');
