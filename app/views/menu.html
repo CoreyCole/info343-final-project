@@ -15,5 +15,33 @@
                 <md-divider ng-if="!$last"></md-divider>
             </md-list-item>
         </md-list>
+        <footer>
+            <md-menu>
+                <md-button aria-label="Open signal features" class="md-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+                    <i ng-show="table.signal" class="fa fa-bell fa-2x"></i>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.redial($event)">
+                            <md-icon md-menu-align-target></md-icon>
+                            Redial
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                        <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
+                            <md-icon></md-icon>
+                            Check voicemail
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.toggleNotifications()">
+                            <md-icon></md-icon>
+                            {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }} notifications
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </footer>
     </md-content>
 </div>
