@@ -4,6 +4,6 @@
  * # SearchResultsCtrl
  */
 angular.module('bellhappApp')
-    .controller('SearchResultsCtrl', function ($scope) {
+    .controller('SearchResultsCtrl', function ($scope, $stateParams) {
 
     });
