@@ -1,34 +1,22 @@
 <div class="cart" ng-controller="CartCtrl">
-    <h1>Food Cart!</h1>
-    <h3>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h3>
+    <!--<h1>Food Cart!</h1>-->
+    <!--<h3>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h3>-->
 
-    <!--<md-toolbar class="md-theme-light">-->
-        <!--<h2 class="md-toolbar-tools">-->
-            <!--<span>Food Cart!</span>-->
-        <!--</h2>-->
-        <!--<h4>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h4>-->
-    <!--</md-toolbar>-->
+    <md-toolbar class="md-theme-light cart-toolbar">
+        <h2 class="md-toolbar-tools">
+            <span>Food Cart!</span>
+            <md-button aria-label="Close the cart">
+                <!-- this might not work, make sure to check this-->
+                <md-icon ui-sref="menu"><i class="fa fa-times"></i></md-icon>
+            </md-button>
+        </h2>
+        <h4 id="description">These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h4>
 
-    <!--<md-content>-->
-        <!--<md-list>-->
-            <!--<md-list-item class="md-3-line" ng-repeat="item in cart">-->
-                <!--<div class="md-list-item-text">-->
-                    <!--<h3>{{item.name}}</h3>-->
-                    <!--<h4>{{item.quantity}}</h4>-->
-                    <!--<p>{{item.price}}</p>-->
-                <!--</div>-->
-                <!--<md-button class="md-secondary">Respond</md-button>-->
-                <!--<md-divider ng-if="!$last"></md-divider>-->
-            <!--</md-list-item>-->
-        <!--</md-list>-->
-    <!--</md-content>-->
+    </md-toolbar>
 
 
-
-
-    <div class="col-md-6" id="cart">
+    <div class="cart">
         <table class="table" id="cart-list">
-            <h1>Your Cart</h1>
             <thead>
             <tr>
                 <th> </th>
@@ -39,9 +27,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="items in cart">
-                <td><button  ng-click="remove(items)"><i class="fa fa-minus"></i></button></td>
+                <td><md-button>
+                    <!-- this might not work, make sure to check this-->
+                    <md-icon ng-click="remove(order)""><i class="fa fa-times"></i></md-icon>
+                </md-button></td>
                 <td>{{items.name}}</td>
-                <td>{{items.price}}</td>
+                <td>${{items.price}}</td>
                 <td><button id='quantity' type="button" ng-click="">{{items.quantity}}</button></td>
             </tr>
             </tbody>
@@ -51,9 +42,9 @@
 
     </div>
 
-    <button id="confirm-btn" type="submit" class="md-raised md-primary"
-            ui-sref="order-confirm" ng-click="saveOrder()" >
-            Confirm order!
-    </button>
+    <md-button id="confirm-btn" type="submit" class="md-raised md-primary"
+            ui-sref="order-confirm" ng-click="saveOrder()">
+            Confirm order
+    </md-button>
 
 </div>

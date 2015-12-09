@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/CoreyCole/info343-final-project#readme",
   "devDependencies": {
+    "angular-ui-router": "^0.2.15",
     "gulp": "^3.9.0",
     "gulp-angular-protractor": "0.0.6",
     "gulp-concat": "^2.6.0",
