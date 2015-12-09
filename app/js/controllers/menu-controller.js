@@ -17,14 +17,15 @@ angular.module('bellhappApp')
 
         $scope.showAdvancedItemInfo = function(ev, item) {
             $scope.menuItemFocus = item;
-            console.log($scope.menuItemFocus);
 
             $mdDialog.show({
                 controller: ItemDialogController,
                 templateUrl: 'views/menu-item-info-test.html',
                 targetEvent: ev,
                 clickOutsideToClose:true,
-                fullscreen: $mdMedia('sm') && $scope.customFullscreen
+                fullscreen: $mdMedia('sm') && $scope.customFullscreen,
+                scope: $scope,
+                preserveScope: true
             })
             .then(function(answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
@@ -89,7 +90,7 @@ angular.module('bellhappApp')
         };
     });
     function ItemDialogController($scope, $mdDialog) {
-        console.log($scope.$parent.menuItemFocus);
+        console.log($scope.menuItemFocus);
 
         $scope.hide = function() {
             $mdDialog.hide();
