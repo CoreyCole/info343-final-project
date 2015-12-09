@@ -2,4 +2,24 @@
 
 .menu-item-info {
 
+	h1 {
+    	color: $primary-color;
+  	}	
+  	
+  	div.col-xs-6.col-sm-4 {
+  		text-align: center;
+  	}
+
+  	li {
+  		font-size: 115%;
+
+  		.ng-binding {
+  			width: 100px;
+  		}
+  	}
+
+  	div#price.md-list-item-text {
+  		padding-left: 150px;
+  	}
+
 }

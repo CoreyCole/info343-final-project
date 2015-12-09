@@ -5,4 +5,3 @@ bower_components
 /app/index.html
 dist
 .DS_Store
-app/.DS_Store
