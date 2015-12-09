@@ -1,6 +1,12 @@
+@import 'base';
+
 .tablet {
   width: 100%;
   overflow: auto;
+
+  .md-toolbar-tools {
+    font-size: 36px;
+  }
 
   .tables {
     float: left;
@@ -25,8 +31,7 @@
     font-family: 'Lato';
     color: white;
     right: 0;
-    margin: 0;
-    padding: 0;
+    overflow: visible;
   }
 
   .table-number {
@@ -39,32 +44,39 @@
   }
 
   .signal-icon {
-    color: red;
+    color: $help-signal-color;
     position: absolute;
-    top: -10px;
+    top: -30px;
+    left: -10px;
   }
 
   .drinks-icon {
-    color: red;
+    color: $drinks-signal-color;
     position: absolute;
     top: 40px;
+    left: -10px;
   }
 
   .check-icon {
-    color: red;
+    color: $check-signal-color;
     position: absolute;
     top: 40px;
-    left: 40px
+    left: 45px
   }
 
   .notifications {
     position: absolute;
-    top: -10px;
+    top: -20px;
     left: 40px;
     color: white;
-    background-color: red;
+    background-color: $notification-background-color;
     border-radius: 100px;
     border: 1px solid red;
+    font-size: 20px;
+  }
+
+  .alert {
+    font-size: 20px;
   }
 
   .close-alert-btn {

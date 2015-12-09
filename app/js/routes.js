@@ -26,6 +26,16 @@ angular.module('bellhappApp')
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
             })
+            .state('menu-item-info', {
+                url: '/menu-item-info/:id',
+                templateUrl: 'views/menu-item-info.html',
+                controller: 'MenuItemInfoCtrl'
+            })
+            .state('ingredients-info', {
+                url: '/ingredients-info/:id',
+                templateUrl: 'views/ingredients-info.html',
+                controller: 'IngredientsInfoCtrl'
+            })
             .state('tablet', {
                 url: '/tablet/:restaurantid',
                 templateUrl: 'views/tablet.html',
@@ -36,7 +46,6 @@ angular.module('bellhappApp')
                 templateUrl: 'views/cart.html',
                 controller: 'CartCtrl'
             });
-
 
         $urlRouterProvider.otherwise('/');
     });

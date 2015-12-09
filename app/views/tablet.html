@@ -15,15 +15,15 @@
                     {{table.number}}
                 </p>
                 <p class="signal-icon">
-                    <i ng-show="table.signal" class="fa fa-bell"></i>
+                    <i ng-show="table.signal" class="fa fa-bell fa-2x"></i>
                 </p>
                 <p class="drinks-icon">
-                    <i ng-show="table.drinks" class="fa fa-beer"></i>
+                    <i ng-show="table.drinks" class="fa fa-beer fa-2x"></i>
                 </p>
                 <p class="check-icon">
-                    <i ng-show="table.check" class="fa fa-money"></i>
+                    <i ng-show="table.check" class="fa fa-money fa-2x"></i>
                 </p>
-                <p class="notifications" ng-show="table.notifications > 0">{{table.notifications}}</p>
+                <p class="notifications badge" ng-show="table.orders > 0">{{table.orders}}</p>
             </md-button>
         </div>
     </div>
