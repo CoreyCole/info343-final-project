@@ -1,11 +1,26 @@
 @import 'base';
 
 .menu {
-  .md-3-line {
-    padding: 10px;
-  }
-
   .md-primary {
     margin-top: 10px;
+  }
+
+  .md-fab {
+    padding-top: 5px;
+  }
+
+  .md-subhead {
+    display: block;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    float: right;
+
+    .md-fab {
+      float: right;
+    }
   }
 }
