@@ -1,3 +1,21 @@
 <div class="order-confirm" ng-controller="OrderConfirmCtrl">
-
+    <md-toolbar class="md-theme-light">
+        <h2 class="md-toolbar-tools">
+            <span>Order</span>
+        </h2>
+    </md-toolbar>
+    <md-subheader class="md-no-sticky"></md-subheader>
+    <md-list-item class="md-2-line" ng-repeat="item in cart">
+        <!--<md-icon md-svg-icon="communication:phone" ng-if="$index !== 2" ng-class="{'md-avatar-icon': $index === 1}"></md-icon>-->
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+            <h3> {{ item.name }} </h3>
+            <p> Qty: {{ item.quantity }} </p>
+        </div>
+    </md-list-item>
+        <md-toolbar class="md-theme-light">
+            <h2 class="md-toolbar-tools">
+                <!-- would a countdown timer take up too much bandwidth?-->
+                <span>Your order should be ready in: </span>
+            </h2>
+        </md-toolbar>
 </div>

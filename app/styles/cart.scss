@@ -6,13 +6,20 @@ md-toolbar{
   }
 
   h4{
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 16px;
     padding-right: 16px;
   }
 }
 
 #confirm-btn{
-  position: relative;
-  text-align: right;
+    position: relative;
+    text-align: right;
+}
+
+.cart-toolbar{
+  button{
+    float: right;
+    width: auto;
+  }
 }
