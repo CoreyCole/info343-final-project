@@ -47,6 +47,5 @@ angular.module('bellhappApp')
                 controller: 'CartCtrl'
             });
 
-
         $urlRouterProvider.otherwise('/');
     });
