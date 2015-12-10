@@ -13,6 +13,7 @@ angular.module('bellhappApp', [
     .constant('tableID', '-K4bEvRhNhh3LCWhRLGW')
     .constant('testTableID', '-K4bEvRhNhh3LCWhRLGW')
     .constant('brand', 'bellhapp')
+    .constant('restKey', 'chosenRest')
     .factory('currentTableRef', function(firebaseUrl, tableID) {
         var rootRef = new Firebase(firebaseUrl);
         var tablesRef = rootRef.child("tables");
