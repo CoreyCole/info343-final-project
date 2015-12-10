@@ -23,26 +23,31 @@ angular.module('bellhappApp')
         function dismissSignal(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            console.log($scope.tables.$getRecord(notification.tableID));
             $scope.tables.$getRecord(notification.tableID).signal = false;
-            //currentTableRef.update({
-            //    signal: false
-            //});
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
         }
 
         function dismissDrinks(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                drinks: false
-            });
+            $scope.tables.$getRecord(notification.tableID).drinks = false;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+            //notification.closed = true;
+            //$scope.feed.$save(notification);
+            //currentTableRef.update({
+            //    drinks: false
+            //});
         }
 
         function dismissCheck(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                check: false
-            });
+            $scope.tables.$getRecord(notification.tableID).check = false;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+            //notification.closed = true;
+            //$scope.feed.$save(notification);
+            //currentTableRef.update({
+            //    check: false
+            //});
         }
     });
