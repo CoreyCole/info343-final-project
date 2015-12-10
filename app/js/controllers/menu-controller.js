@@ -153,7 +153,7 @@ angular.module('bellhappApp')
         };
     }
 
-    function CartDialogController($scope, $mdDialog) {
+    function CartDialogController($scope, $mdDialog,  $firebaseArray, rootRef, $stateParams) {
         $scope.hide = function() {
             $mdDialog.hide();
         };

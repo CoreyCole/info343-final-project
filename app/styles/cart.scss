@@ -7,9 +7,28 @@ md-toolbar{
 
   h4{
     font-size: 14px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: $modal-padding;
+    padding-right: $modal-padding;
+    padding-top: 65px;
+    margin-top: 0;
   }
+
+  .md-icon-button{
+    padding-left: 0;
+    padding-right: 0;
+    float: right;
+  }
+
+  .title{
+    position: fixed;
+    top: 0;
+    background-color: rgb(63, 81, 181); //need to change this to the color of the bars
+  }
+}
+
+.md-toolbar-tools{
+  padding-left: $modal-padding;
+  padding-right: $modal-padding;
 }
 
 #send-order{
@@ -27,13 +46,6 @@ md-toolbar{
 }
 
 
-.cart-toolbar{
-  .close{
-    float: right;
-    width: 50px;
-  }
-}
-
 .container{
   width: auto;
   padding-left: 0;
@@ -42,14 +54,18 @@ md-toolbar{
 
   .md-button{
     min-width: 0;
-    padding-right: 10px;
+    padding-right: 0;
   }
 
-  .cart{
-    td{
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
+  table tr{
+    padding-top: $modal-padding;
+    padding-bottom: $modal-padding;
+    margin-left: $modal-padding;
+    margin-right: $modal-padding;
+
+  }
+  table .labels{
+    padding-right: 20px;
   }
 }
 
@@ -62,3 +78,8 @@ md-toolbar{
 form{
   padding-bottom: 50px;
 }
+
+//.cart{
+//  margin-left: $modal-padding;
+//  margin-right: $modal-padding;
+//}
