@@ -303,6 +303,7 @@ angular.module('bellhappApp')
                     fulfilled: false
                 });
             });
+            localStorage.clear();
         };
 
         $scope.restaurant = $stateParams.restaurantid;
