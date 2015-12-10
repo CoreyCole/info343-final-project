@@ -253,11 +253,11 @@ angular.module('bellhappApp')
 
         //getting the items added to cart from local storage
 
-        $scope.cart = [{name: 'Pepperoni Pizza', price: 5.99, quantity: 1}, {name: 'Cheese Pizza', price: 3.99, quantity: 2}
-            , {name: 'Cheese Pizza', price: 3.99, quantity: 2}, {name: 'Cheese Pizza', price: 3.99, quantity: 2}
-            , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1} , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}
-            , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}, {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}];
-        localStorage.setItem('cart', angular.toJson($scope.cart));
+        //$scope.cart = [{name: 'Pepperoni Pizza', price: 5.99, quantity: 1}, {name: 'Cheese Pizza', price: 3.99, quantity: 2}
+        //    , {name: 'Cheese Pizza', price: 3.99, quantity: 2}, {name: 'Cheese Pizza', price: 3.99, quantity: 2}
+        //    , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1} , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}
+        //    , {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}, {name: 'Pepperoni Pizza', price: 5.99, quantity: 1}];
+        //localStorage.setItem('cart', angular.toJson($scope.cart));
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
 
 

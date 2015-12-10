@@ -7,9 +7,9 @@
         </md-toolbar>
         <div class="table-data">
             <md-button class="md-fab md-primary table" ng-repeat="table in tables"
-                 ng-style="{left: {{table.x}} + 'px',
-                            top: {{table.y}} + 'px',
-                            'background-color': '{{table.color}}' }"
+                 ng-style="{left: table.x + 'px',
+                            top: table.y + 'px',
+                            'background-color': table.color }"
                  class="table-data-tables">
                 <p class="table-number">
                     {{table.number}}
