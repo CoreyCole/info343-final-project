@@ -1,9 +1,64 @@
 @import 'base';
 
-.cart {
+md-toolbar{
+  span{
+    font-size: 30px;
+  }
 
+  h4{
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
-#quantity{
-  border-style: none;
+#send-order{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  #confirm-btn{
+    text-align: center;
+    float: right;
+    padding-right: 1em;
+    padding-left: 1em;
+
+  }
+}
+
+
+.cart-toolbar{
+  .close{
+    float: right;
+    width: 50px;
+  }
+}
+
+.container{
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+
+  .md-button{
+    min-width: 0;
+    padding-right: 10px;
+  }
+
+  .cart{
+    td{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+#cost{
+  padding-left: $modal-padding;
+  padding-right: $modal-padding;
+  position: inherit;
+}
+
+form{
+  padding-bottom: 50px;
 }

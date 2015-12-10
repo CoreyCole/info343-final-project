@@ -5,17 +5,18 @@
  *
  * TO DO:
  * -add ability to change the quantity of item
+ * -add toast as the confirmation for order 
  * -
  */
 angular.module('bellhappApp')
-    .controller('CartCtrl', function ($scope, firebaseUrl, $firebaseArray, rootRef) {
+    .controller('CartCtrl', function ($scope, $firebaseArray, rootRef) {
         //eventually adding the cart to the list of orders in firebase
         $scope.orders = $firebaseArray(rootRef);
 
         //getting the items added to cart from local storage
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
 
-        //after the user clicks the remove button, we delte it from local storage
+        //after the user clicks the remove button, we delete it from local storage
         $scope.remove = function(item){
             $scope.cart.splice($scope.cart.indexOf(item), 1);
             localStorage.setItem('cart', angular.toJson($scope.cart));
@@ -35,6 +36,7 @@ angular.module('bellhappApp')
 
         //calculate the tax
         $scope.tax = function(){
+            console.log("tax running");
             var cost = calculate();
             tax = cost * 0.095; //sales tax right now is 9.5%
             return tax;
@@ -43,6 +45,16 @@ angular.module('bellhappApp')
         //total cost of menu items
         $scope.totalCost = function(){
             return total + tax;
+        };
+
+        $scope.saveOrder = function(){
+            $scope.cart.forEach(function (item){
+                $scope.orders.$add({
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.cart.price
+                });
+            });
         };
 
     });

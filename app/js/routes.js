@@ -41,10 +41,15 @@ angular.module('bellhappApp')
                 templateUrl: 'views/tablet.html',
                 controller: 'TabletCtrl'
             })
-            .state('cart', {
-                url: '/cart',
-                templateUrl: 'views/cart.html',
-                controller: 'CartCtrl'
+            //.state('cart', {
+            //    url: '/cart',
+            //    templateUrl: 'views/cart.html',
+            //    controller: 'CartCtrl'
+            //})
+            .state('order-confirm', {
+                url: '/cart/order-confirm',
+                templateUrl: 'views/order-confirm.html',
+                controller: 'OrderConfirmCtrl'
             });
 
         $urlRouterProvider.otherwise('/');
