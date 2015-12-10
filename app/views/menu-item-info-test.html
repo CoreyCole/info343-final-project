@@ -32,7 +32,7 @@
           <div class="md-list-item-text" >
                 <md-list-item ng-repeat="item in menuItemFocus.ingreedients.commonAlergens" >
                   <div class="allergen">
-                    <p> Allergens: {{ item }}</p>                
+                    <p> Allergen: {{ item }}</p>                
                   </div>
                 </md-list-item>
                 <div class="gluten">
@@ -47,7 +47,7 @@
       </md-tabs>
     </md-dialog-content>
     <div class="addBtn">
-        <md-button class="md-fab md-raised md-primary" ng-click="addMenuItem(menuItemFocus.name, menuItemFocus.price, 1)" aria-label="Add item to cart"><i class="fa fa-cart-arrow-down fa-2x"></i>
+        <md-button class="md-fab md-raised md-primary" ng-click="addMenuItem(menuItemFocus.name, menuItemFocus.price, 1)" aria-label="Add item to cart"><i class="fa fa-plus fa-2x"></i>
         </md-button>
     </div>
   </form>
