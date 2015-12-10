@@ -9,3 +9,4 @@ angular.module('bellhappApp')
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
         
     });
+

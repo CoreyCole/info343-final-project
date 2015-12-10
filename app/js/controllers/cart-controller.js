@@ -5,6 +5,7 @@
  *
  * TO DO:
  * -add ability to change the quantity of item
+ * -add toast as the confirmation for order 
  * -
  */
 angular.module('bellhappApp')
@@ -35,6 +36,7 @@ angular.module('bellhappApp')
 
         //calculate the tax
         $scope.tax = function(){
+            console.log("tax running");
             var cost = calculate();
             tax = cost * 0.095; //sales tax right now is 9.5%
             return tax;

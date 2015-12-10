@@ -22,7 +22,7 @@ angular.module('bellhappApp')
                 controller: 'RestaurantProfileCtrl'
             })
             .state('menu', {
-                url: '/menu/:restaurantid',
+                url: '/menu/:restaurantid/:tableid',
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
             })
@@ -41,11 +41,11 @@ angular.module('bellhappApp')
                 templateUrl: 'views/tablet.html',
                 controller: 'TabletCtrl'
             })
-            .state('cart', {
-                url: '/cart',
-                templateUrl: 'views/cart.html',
-                controller: 'CartCtrl'
-            })
+            //.state('cart', {
+            //    url: '/cart',
+            //    templateUrl: 'views/cart.html',
+            //    controller: 'CartCtrl'
+            //})
             .state('order-confirm', {
                 url: '/cart/order-confirm',
                 templateUrl: 'views/order-confirm.html',

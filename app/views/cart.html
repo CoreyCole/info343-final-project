@@ -1,50 +1,52 @@
-<div class="cart" ng-controller="CartCtrl">
-    <!--<h1>Food Cart!</h1>-->
-    <!--<h3>These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h3>-->
+<md-dialog aria-label="Cart" ng-cloak>
+    <form>
+        <div class="container">
 
-    <md-toolbar class="md-theme-light cart-toolbar">
-        <h2 class="md-toolbar-tools">
-            <span>Food Cart!</span>
-            <md-button aria-label="Close the cart">
-                <!-- this might not work, make sure to check this-->
-                <md-icon ui-sref="menu"><i class="fa fa-times"></i></md-icon>
-            </md-button>
-        </h2>
-        <h4 id="description">These are the menu items that you have added to your cart. Please feel free to delete or edit any of your orders.</h4>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Food Cart</h2>
+                    <span flex></span>
+                    <md-button aria-label="exit modal" class="md-icon-button" ng-click="cancel()">
+                        <i class="fa fa-times fa-lg"></i>
+                    </md-button>
+                </div>
+                <h4 id="description">These are the menu items that you have added to your cart.
+                    Please feel free to delete or edit any of your orders.</h4>
+            </md-toolbar>
 
-    </md-toolbar>
-
-
-    <div class="cart">
-        <table class="table" id="cart-list">
-            <thead>
-            <tr>
-                <th> </th>
-                <th>Menu Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="items in cart">
-                <td><md-button>
-                    <!-- this might not work, make sure to check this-->
-                    <md-icon ng-click="remove(order)""><i class="fa fa-times"></i></md-icon>
-                </md-button></td>
-                <td>{{items.name}}</td>
-                <td>${{items.price}}</td>
-                <td><button id='quantity' type="button" ng-click="">{{items.quantity}}</button></td>
-            </tr>
-            </tbody>
-        </table>
-        <p style="text-align: right"> Tax: {{tax() | currency}}</p>
-        <p style="text-align: right"> Total Price: {{totalCost() | currency}}</p>
-
+            <div class="cart">
+                <table class="table" id="cart-list">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Menu Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="items in cart">
+                        <td id="delete"><md-button>
+                            <!-- this might not work, make sure to check this-->
+                            <md-icon ng-click="remove(items)" aria-label="Delete menu item"><i class="fa fa-times"></i></md-icon>
+                        </md-button></td>
+                        <td>{{items.name}}</td>
+                        <td>{{items.quantity}}</td>
+                        <td>${{items.price}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="cost">
+                    <p style="text-align: right"> Tax: {{tax | currency}}</p>
+                    <p style="text-align: right"> Total Price: {{total | currency}}</p>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="send-order">
+        <md-button id="confirm-btn" type="submit" class="md-raised md-primary"
+                   ui-sref="order-confirm" ng-click="saveOrder()" ng-disabled="cart.length == 0">
+            Send order
+        </md-button>
     </div>
-
-    <md-button id="confirm-btn" type="submit" class="md-raised md-primary"
-            ui-sref="order-confirm" ng-click="saveOrder()">
-            Confirm order
-    </md-button>
-
-</div>
+</md-dialog>

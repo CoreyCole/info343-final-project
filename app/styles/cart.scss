@@ -12,14 +12,53 @@ md-toolbar{
   }
 }
 
-#confirm-btn{
-    position: relative;
-    text-align: right;
+#send-order{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  #confirm-btn{
+    text-align: center;
+    float: right;
+    padding-right: 1em;
+    padding-left: 1em;
+
+  }
 }
 
+
 .cart-toolbar{
-  button{
+  .close{
     float: right;
-    width: auto;
+    width: 50px;
   }
+}
+
+.container{
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+
+  .md-button{
+    min-width: 0;
+    padding-right: 10px;
+  }
+
+  .cart{
+    td{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+#cost{
+  padding-left: $modal-padding;
+  padding-right: $modal-padding;
+  position: inherit;
+}
+
+form{
+  padding-bottom: 50px;
 }
