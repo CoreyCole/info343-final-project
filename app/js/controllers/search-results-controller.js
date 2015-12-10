@@ -4,8 +4,12 @@
  * # SearchResultsCtrl
  */
 angular.module('bellhappApp')
-    .controller('SearchResultsCtrl', function ($scope, $stateParams, $firebaseArray, rootRef) {
+    .controller('SearchResultsCtrl', function ($scope, $stateParams, $firebaseArray, $state, rootRef) {
         $scope.results = $firebaseArray(rootRef.child("restaurants"));
+
+        $scope.viewRestaurant = function(restaurant) {
+            $state.go('restaurant-profile', {restaurantid: restaurant.$id});
+        };
 
         $scope.results.$loaded().then(function() {
             var count = 0;

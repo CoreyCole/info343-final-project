@@ -21,6 +21,9 @@ angular.module('bellhappApp', [
     .factory('rootRef', function(firebaseUrl) {
         return new Firebase(firebaseUrl);
     })
+    .factory('restaurantsRef', function(rootRef) {
+        return rootRef.child("restaurants");
+    })
     .factory('testRestaurantRef', function(rootRef, testRestaurantID) {
         return rootRef.child("restaurants").child(testRestaurantID);
     })
