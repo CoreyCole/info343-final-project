@@ -14,8 +14,10 @@ angular.module('bellhappApp')
 
         // cart[objects] where objects is coffee type, quantity, base price
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
+        console.log($scope.cart);
 
         $scope.addToCart = function(name, price, quantity, wanted) {
+            $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
             $mdToast.show($mdToast.simple().
                 content('This ' + name.name + ' has been added to your cart!').position($scope.getMsgPosition())
                 .hideDelay(5000));
@@ -26,6 +28,7 @@ angular.module('bellhappApp')
         // saves the cart with the product information to the localstorage.
         // cart auto updates.
         $scope.addMenuItem = function(name, price, quantity, wanted) {
+            $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
             $mdToast.show($mdToast.simple().
                 content('This ' + name + ' has been added to your cart!').position($scope.getMsgPosition())
                 .hideDelay(5000));
