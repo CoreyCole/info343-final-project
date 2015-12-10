@@ -4,7 +4,6 @@
       <div class="md-toolbar-tools">
         <div class="nameAndItem"> 
             <h2> {{menuItemFocus.name}} </h2>
-            <h2> ${{menuItemFocus.price}} </h2>
         </div>
         <span flex></span>
         <md-button aria-label="exit tab" class="md-icon-button" ng-click="cancel()">
@@ -18,7 +17,12 @@
           <md-content class="md-padding">
                 <div layout="column" layout-align="center">
                     <div class="md-list-menuItemFocus-text" layout="row" layout-align="center left">
-                        <h3> {{menuItemFocus.description}} </h3>
+                        <div class="price">
+                          <h3> ${{menuItemFocus.price}} </h3>
+                        </div>
+                        <div class="description">
+                          <h3> {{menuItemFocus.description}} </h3>
+                        </div>
                     </div>
                 </div> 
         </md-content>
@@ -27,12 +31,16 @@
           <md-content class="md-padding">
           <div class="md-list-item-text" >
                 <md-list-item ng-repeat="item in menuItemFocus.ingreedients.commonAlergens" >
-                <li> {{ item }} </li>
+                  <div class="allergen">
+                    <p> Allergens: {{ item }}</p>                
+                  </div>
                 </md-list-item>
+                <div class="gluten">
+                  <p>Gluten: {{menuItemFocus.ingreedients.gluttenFree}}</p>
+                </div>
                 <md-list-item ng-repeat="item in menuItemFocus.ingreedients.ingreedientsList" >
-                <li> {{ item }} </li>
+                <p> {{ item }} </p>
                 </md-list-item>
-                <p>gluten: {{menuItemFocus.ingreedients.gluttenFree}}</p>
             </div>
           </md-content>
         </md-tab>

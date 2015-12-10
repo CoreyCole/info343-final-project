@@ -1,84 +1,89 @@
 @import 'base';
 
-md-toolbar{
-  span{
-    font-size: 30px;
+.cart {
+  md-toolbar {
+    span {
+      font-size: 30px;
+    }
+
+    h4 {
+      font-size: 14px;
+      padding-left: $modal-padding;
+      padding-right: $modal-padding;
+      padding-top: 65px;
+      margin-top: 0;
+    }
+
+    .md-icon-button {
+      padding-left: 0;
+      padding-right: 0;
+      float: right;
+    }
+
+    .title {
+      position: fixed;
+      top: 0;
+      background-color: rgb(63, 81, 181); //need to change this to the color of the bars
+    }
   }
 
-  h4{
-    font-size: 14px;
+  .md-toolbar-tools {
     padding-left: $modal-padding;
     padding-right: $modal-padding;
-    padding-top: 65px;
-    margin-top: 0;
   }
 
-  .md-icon-button{
+  #send-order {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    #confirm-btn {
+      text-align: center;
+      float: right;
+      padding-right: 1em;
+      padding-left: 1em;
+
+    }
+  }
+
+  .container {
+    width: auto;
     padding-left: 0;
     padding-right: 0;
-    float: right;
+    display: block;
+
+    .md-button {
+      min-width: 0;
+      padding-right: 0;
+    }
+
+    table tr {
+      padding-top: $modal-padding;
+      padding-bottom: $modal-padding;
+      margin-left: $modal-padding;
+      margin-right: $modal-padding;
+
+    }
+    table .labels {
+      padding-right: 20px;
+    }
   }
 
-  .title{
-    position: fixed;
-    top: 0;
-    background-color: rgb(63, 81, 181); //need to change this to the color of the bars
-  }
-}
-
-.md-toolbar-tools{
-  padding-left: $modal-padding;
-  padding-right: $modal-padding;
-}
-
-#send-order{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-
-  #confirm-btn{
-    text-align: center;
-    float: right;
-    padding-right: 1em;
-    padding-left: 1em;
-
-  }
-}
-
-
-.container{
-  width: auto;
-  padding-left: 0;
-  padding-right: 0;
-  display: block;
-
-  .md-button{
-    min-width: 0;
-    padding-right: 0;
+  #cost {
+    padding-left: $modal-padding;
+    padding-right: $modal-padding;
+    position: inherit;
   }
 
-  table tr{
-    padding-top: $modal-padding;
-    padding-bottom: $modal-padding;
-    margin-left: $modal-padding;
-    margin-right: $modal-padding;
-
+  form {
+    padding-bottom: 50px;
   }
-  table .labels{
-    padding-right: 20px;
+
+  td, th {
+    overflow: hidden;
+    width: 50px;
   }
 }
-
-#cost{
-  padding-left: $modal-padding;
-  padding-right: $modal-padding;
-  position: inherit;
-}
-
-form{
-  padding-bottom: 50px;
-}
-
 //.cart{
 //  margin-left: $modal-padding;
 //  margin-right: $modal-padding;
