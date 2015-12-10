@@ -11,22 +11,24 @@ angular.module('bellhappApp')
         $scope.currentTableRef = currentTableRef;
 
         $scope.dismiss = function(notification) {
-            if (notification.data === "assistance") {
+            if (notification.data === "help") {
                 dismissSignal(notification);
             } else if (notification.data === "drinks") {
                 dismissDrinks(notification);
             } else if (notification.data === "check") {
                 dismissCheck(notification);
             }
-        }
+        };
 
         function dismissSignal(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                signal: false
-            });
-        };
+            console.log($scope.tables.$getRecord(notification.tableID));
+            $scope.tables.$getRecord(notification.tableID).signal = false;
+            //currentTableRef.update({
+            //    signal: false
+            //});
+        }
 
         function dismissDrinks(notification) {
             notification.closed = true;
@@ -34,7 +36,7 @@ angular.module('bellhappApp')
             currentTableRef.update({
                 drinks: false
             });
-        };
+        }
 
         function dismissCheck(notification) {
             notification.closed = true;
@@ -42,5 +44,5 @@ angular.module('bellhappApp')
             currentTableRef.update({
                 check: false
             });
-        };
+        }
     });

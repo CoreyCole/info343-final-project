@@ -4,12 +4,14 @@
  * # MenuCtrl
  */
 angular.module('bellhappApp')
-    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, $stateParams, testRestaurantRef, $firebaseObject, rootRef) {
+    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, $stateParams, testRestaurantRef, $firebaseObject, $firebaseArray, rootRef) {
         $scope.restaurant = $firebaseObject(rootRef.child("restaurants").child($stateParams.restaurantid));
-        var tableRef = rootRef.child($stateParams.restaurantid).child($stateParams.tableid);
-        $scope.restaurant.$loaded().then(function() {
-            console.log($scope.restaurant);
-        });
+        $scope.feed = $firebaseArray(rootRef.child("restaurants").child($stateParams.restaurantid).child("feed"));
+        var tableRef = rootRef.child("restaurants").child($stateParams.restaurantid).child("tables").child($stateParams.tableid);
+        var table = $firebaseObject(rootRef.child("restaurants").child($stateParams.restaurantid).child("tables").child($stateParams.tableid));
+        $scope.table = table;
+        table.$bindTo($scope, "table");
+
         $scope.order = function(menuItemId) {
             tableRef.child("orders").transaction(function(current_value) {
                 return current_value + 1;
@@ -17,19 +19,30 @@ angular.module('bellhappApp')
         };
 
         $scope.sendHelpSignal = function() {
-            tableRef.once("value", function(snapshot) {
-                if (!snapshot.child("signal").val()) {
-                    $scope.feed.$add({
-                        tableNum: snapshot.child("number").val(),
-                        data: "assistance",
-                        alertType: "alert-danger",
-                        closed: false
-                    });
-                    currentTableRef.update({
-                        signal: true
-                    });
-                }
-            });
+            console.log($scope.table.signal);
+            if (!$scope.table.signal) {
+                $scope.feed.$add({
+                    tableNum: $scope.table.number,
+                    tableID: $scope.table.$id,
+                    data: "help",
+                    alertType: "alert-danger",
+                    closed: false
+                });
+                $scope.table.signal = true;
+            }
+            //tableRef.once("value", function(snapshot) {
+            //    if (!snapshot.child("signal").val()) {
+            //        $scope.feed.$add({
+            //            tableNum: snapshot.child("number").val(),
+            //            data: "help",
+            //            alertType: "alert-danger",
+            //            closed: false
+            //        });
+            //        tableRef.update({
+            //            signal: true
+            //        });
+            //    }
+            //});
         };
 
         $scope.sendDrinksSignal = function() {
@@ -41,7 +54,7 @@ angular.module('bellhappApp')
                         alertType: "alert-info",
                         closed: false
                     });
-                    currentTableRef.update({
+                    tableRef.update({
                         drinks: true
                     });
                 }
@@ -57,7 +70,7 @@ angular.module('bellhappApp')
                         alertType: "alert-success",
                         closed: false
                     });
-                    currentTableRef.update({
+                    tableRef.update({
                         check: true
                     });
                 }
@@ -210,7 +223,7 @@ angular.module('bellhappApp')
         };
     }
 
-    function CartDialogController($scope, $mdDialog) {
+    function CartDialogController($scope, $mdDialog, $firebaseArray, rootRef, $stateParams) {
         $scope.hide = function() {
             $mdDialog.hide();
         };
