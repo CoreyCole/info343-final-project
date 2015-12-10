@@ -11,10 +11,6 @@ angular.module('bellhappApp')
             $mdOpenMenu(ev);
         };
 
-        //$scope.restaurant.$loaded().then(function() {
-        //    console.log($scope.restaurant.name);
-        //});
-
         $scope.showAdvancedItemInfo = function(ev, item) {
             $scope.menuItemFocus = item;
 
@@ -89,7 +85,35 @@ angular.module('bellhappApp')
             });
         };
     });
-    function ItemDialogController($scope, $mdDialog) {
+    
+    function ItemDialogController($scope, $mdDialog, $mdMedia, $mdToast, $animate) {
+
+       // cart[objects] where objects is coffee type, quantity, base price
+        $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
+
+      // saves the cart with the product information to the localstorage. 
+      // cart auto updates.  
+      $scope.addMenuItem = function(name, price, quantity, wanted) {
+          $mdToast.show($mdToast.simple().
+            content('This ' + name + ' has been added to your cart!').position($scope.getMsgPosition())
+            .hideDelay(5000));
+          $scope.cart.push({name: name, price: price, quantity: quantity});
+          localStorage.setItem('cart', angular.toJson($scope.cart));
+      };
+
+      $scope.toastPosition = {
+        bottom: false,
+        top: true,
+        left: false,
+        right: true
+      };
+
+      $scope.getMsgPosition = function() {
+        return Object.keys($scope.toastPosition)
+          .filter(function(pos) { return $scope.toastPosition[pos]; })
+          .join(' ');
+      };
+
         console.log($scope.menuItemFocus);
 
         $scope.hide = function() {
@@ -101,7 +125,33 @@ angular.module('bellhappApp')
         $scope.answer = function(answer) {
             $mdDialog.hide(answer);
         };
+
+        $scope.showIngredientItemInfo = function(ev, item) {
+            $scope.menuItemFocus = item;
+            console.log($scope.menuItemFocus);
+            $mdDialog.show({
+                controller: ItemIngredientsDialogController,
+                templateUrl: 'views/ingredients-info.html',
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: $mdMedia('sm') && $scope.customFullscreen,
+                scope: $scope,
+                preserveScope: true
+            })
+            .then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
+
+            $scope.$watch(function() {
+                return $mdMedia('sm');
+            }, function(sm) {
+                $scope.customFullscreen = (sm === true);
+            });
+        };
     }
+
     function CartDialogController($scope, $mdDialog) {
         $scope.hide = function() {
             $mdDialog.hide();

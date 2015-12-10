@@ -2,24 +2,65 @@
 
 .menu-item-info {
 
-	h1 {
-    	color: $primary-color;
-  	}	
-  	
-  	div.col-xs-6.col-sm-4 {
-  		text-align: center;
-  	}
+  h1 {
+      color: $primary-color;
+    } 
+    
+    div.col-xs-6.col-sm-4 {
+      text-align: center;
+    }
 
-  	li {
-  		font-size: 115%;
+    li {
+      font-size: 115%;
 
-  		.ng-binding {
-  			width: 100px;
-  		}
-  	}
+      .ng-binding {
+        width: 100px;
+      }
+    }
 
-  	div#price.md-list-item-text {
-  		padding-left: 150px;
-  	}
+    div#price.md-list-item-text {
+      padding-left: 50px;
+    }
+    
+    footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    float: right;
+
+    .md-fab {
+      float: right;
+    }
+  }
+
+  .md-display-2 {
+    font-size: 30px;
+  }
+
+  span.ng-scope {
+    font-size: 10px;
+  }
+
+  .md-tab {
+    float: none;
+  }
+
+  h2.ng-binding {
+
+  }
+
+  .addBtn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    margin-top: 5em;
+    
+
+    button {
+    background-color: black;
+      float: right;
+    }
+  }
 
 }
