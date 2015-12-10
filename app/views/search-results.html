@@ -6,7 +6,8 @@
     </md-toolbar>
     <md-content class="md-padding">
         <md-card ng-repeat="restaurant in results"
-                ng-show="restaurant.show">
+                 ng-click="viewRestaurant(restaurant)"
+                 ng-show="restaurant.show">
             <!--<img ng-src="{{restaurant.pictureUrl}}" class="md-card-image" alt="Washed Out">-->
             <md-card-title>
                 <md-card-title-text>
@@ -17,6 +18,10 @@
             <md-card-content>
                 <p>{{restaurant.description}}</p>
             </md-card-content>
+            <button ng-click="viewRest(restaurant)"
+                    class="btn btn-primary"
+                    id="viewRest">View
+            </button>
         </md-card>
     </md-content>
 </div>

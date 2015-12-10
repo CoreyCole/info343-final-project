@@ -1,4 +1,4 @@
-<div class="menu" ng-controller="MenuCtrl"> 
+<div class="menu" ng-controller="MenuCtrl">
     <md-toolbar class="md-theme-light" ng-click="populate1()">
         <h1 class="md-toolbar-tools">
             <span>{{restaurant.name}} Menu</span>
@@ -23,6 +23,9 @@
         </md-card>
     </md-content>
     <footer>
+        <md-button aria-label="Open signal features" class="md-fab md-raised md-primary" ng-click="showAdvancedCart($event)">
+            <i class="fa fa-shopping-cart fa-2x"></i>
+        </md-button>
         <md-menu>
             <md-button aria-label="Open signal features" class="md-fab md-raised md-primary" ng-click="openMenu($mdOpenMenu, $event)">
                 <i class="fa fa-bell fa-2x"></i>
@@ -49,8 +52,5 @@
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
-        <md-button aria-label="Open signal features" class="md-fab md-raised md-primary" ng-click="showAdvancedCart($event)">
-            <i class="fa fa-shopping-cart fa-2x"></i>
-        </md-button>
     </footer>
 </div>

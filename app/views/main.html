@@ -1,39 +1,39 @@
 <div class="main" ng-controller="MainCtrl">
     <section class="title">
-        <h1>{{brand}}</h1>
+        <h1 ng-click="populate()">{{brand}}</h1>
     </section>
     <section class="query-input" layout="column">
         <div class="container">
             <md-autocomplete md-selected-item="selectedLocation"
                              md-search-text="locationSearchText"
                              md-items="item in getLocationMatches(locationSearchText)"
-                             md-item-text="item"
+                             md-item-text="item.location"
                              placeholder="location">
-                <span md-highlight-text="locationSearchText">{{item}}</span>
+                <span md-highlight-text="locationSearchText">{{item.location}}</span>
             </md-autocomplete>
         </div>
         <div class="container">
             <md-autocomplete md-selected-item="selectedFood"
                              md-search-text="foodSearchText"
                              md-items="item in getFoodMatches(foodSearchText)"
-                             md-item-text="item"
+                             md-item-text="item.food"
                              placeholder="food">
-                <span md-highlight-text="foodSearchText">{{item}}</span>
+                <span md-highlight-text="foodSearchText">{{item.food}}</span>
             </md-autocomplete>
         </div>
         <div class="container">
             <md-autocomplete md-selected-item="selectedName"
                              md-search-text="nameSearchText"
                              md-items="item in getNameMatches(nameSearchText)"
-                             md-item-text="item"
+                             md-item-text="item.name"
                              placeholder="name">
-                <span md-highlight-text="nameSearchText">{{item}}</span>
+                <span md-highlight-text="nameSearchText">{{item.name}}</span>
             </md-autocomplete>
         </div>
     </section>
     <section class="buttons">
-        <md-button class="md-raised md-primary"
-                   ng-click="search(selectedLocation, selectedFood, selectedName)"
+        <md-button class="md-raised md-primary search-btn"
+                   ng-click="search(selectedLocation.location, selectedFood.food, selectedName.name)"
                    layout="column">
             Search
         </md-button>
