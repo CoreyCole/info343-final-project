@@ -90,8 +90,6 @@ angular.module('bellhappApp')
         };
     });
     function ItemDialogController($scope, $mdDialog) {
-        console.log($scope.menuItemFocus);
-
         $scope.hide = function() {
             $mdDialog.hide();
         };
