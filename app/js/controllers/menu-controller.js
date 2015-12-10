@@ -4,8 +4,65 @@
  * # MenuCtrl
  */
 angular.module('bellhappApp')
-    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, testRestaurantRef, $firebaseObject, rootRef) {
-        $scope.restaurant = $firebaseObject(testRestaurantRef);
+    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, $stateParams, testRestaurantRef, $firebaseObject, rootRef) {
+        $scope.restaurant = $firebaseObject(rootRef.child("restaurants").child($stateParams.restaurantid));
+        var tableRef = rootRef.child($stateParams.restaurantid).child($stateParams.tableid);
+        $scope.restaurant.$loaded().then(function() {
+            console.log($scope.restaurant);
+        });
+        $scope.order = function(menuItemId) {
+            tableRef.child("orders").transaction(function(current_value) {
+                return current_value + 1;
+            });
+        };
+
+        $scope.sendHelpSignal = function() {
+            tableRef.once("value", function(snapshot) {
+                if (!snapshot.child("signal").val()) {
+                    $scope.feed.$add({
+                        tableNum: snapshot.child("number").val(),
+                        data: "assistance",
+                        alertType: "alert-danger",
+                        closed: false
+                    });
+                    currentTableRef.update({
+                        signal: true
+                    });
+                }
+            });
+        };
+
+        $scope.sendDrinksSignal = function() {
+            tableRef.once("value", function(snapshot) {
+                if (!snapshot.child("drinks").val()) {
+                    $scope.feed.$add({
+                        tableNum: snapshot.child("number").val(),
+                        data: "drinks",
+                        alertType: "alert-info",
+                        closed: false
+                    });
+                    currentTableRef.update({
+                        drinks: true
+                    });
+                }
+            });
+        };
+
+        $scope.sendCheckSignal = function() {
+            tableRef.once("value", function(snapshot) {
+                if (!snapshot.child("check").val()) {
+                    $scope.feed.$add({
+                        tableNum: snapshot.child("number").val(),
+                        data: "check",
+                        alertType: "alert-success",
+                        closed: false
+                    });
+                    currentTableRef.update({
+                        check: true
+                    });
+                }
+            });
+        };
 
         $scope.openMenu = function($mdOpenMenu, ev) {
             $mdOpenMenu(ev);
