@@ -1,18 +1,9 @@
-<div class="order-confirm" ng-controller="OrderConfirmCtrl">
-    <!--<md-toolbar class="md-theme-light">-->
-        <!--<h2 class="md-toolbar-tools">-->
-            <!--<span>Order Sent!</span>-->
-        <!--</h2>-->
-    <!--</md-toolbar>-->
-
-    <!--<h4>Your waiter will bring your order out as soon as it's ready. Please feel free to alert your waiter if you-->
-        <!--would like a refill, your check, or if you have any other questions on the menu page.-->
-    <!--</h4>-->
-
-<!--goes back to menu but not with the correct restaurantid or tableid-->
+<div class="order-confirm" ng-controller="OrderConfirmCtrl" ng-style="{height: screen + 'px'}">
+    <!--goes back to menu but not with the correct restaurantid or tableid-->
     <div id="confirm-copy">
         <h2>Your Order Has Been Placed!</h2>
+        <p>Notify your waiter if you have questions.</p>
+        <md-button class="return md-raised md-primary" ui-sref="menu({restaurantid:restaurant, tableid: table})">Return to Menu</md-button>
     </div>
 
-    <md-button class="return md-raised md-primary" ui-sref="menu">Return to Menu</md-button>
 </div>

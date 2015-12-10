@@ -47,7 +47,7 @@ angular.module('bellhappApp')
             //    controller: 'CartCtrl'
             //})
             .state('order-confirm', {
-                url: '/cart/order-confirm',
+                url: '/cart/order-confirm/:restaurantid/:tableid',
                 templateUrl: 'views/order-confirm.html',
                 controller: 'OrderConfirmCtrl'
             });
