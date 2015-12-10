@@ -13,6 +13,7 @@ angular.module('bellhappApp', [
     .constant('tableID', '-K4bEvRhNhh3LCWhRLGW')
     .constant('testTableID', '-K4bEvRhNhh3LCWhRLGW')
     .constant('brand', 'bellhapp')
+    .constant('restKey', 'chosenRest')
     .factory('currentTableRef', function(firebaseUrl, tableID) {
         var rootRef = new Firebase(firebaseUrl);
         var tablesRef = rootRef.child("tables");
@@ -20,6 +21,9 @@ angular.module('bellhappApp', [
     })
     .factory('rootRef', function(firebaseUrl) {
         return new Firebase(firebaseUrl);
+    })
+    .factory('restaurantsRef', function(rootRef) {
+        return rootRef.child("restaurants");
     })
     .factory('testRestaurantRef', function(rootRef, testRestaurantID) {
         return rootRef.child("restaurants").child(testRestaurantID);
