@@ -1,6 +1,19 @@
 @import 'base';
 
 .menu {
+  md-card {
+    padding: 10px;
+    background-color: rgba(200,200,200,0.3);
+
+    .md-raised {
+      z-index: 0;
+    }
+
+    .md-secondary {
+      color: rgb(63,81,181);
+    }
+  }
+
   .md-primary {
     margin-top: 10px;
   }
@@ -13,14 +26,40 @@
     display: block;
   }
 
+  .md-headline {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .md-subhead {
+    font-size: 14px;
+  }
+
+  .badge {
+    padding-top: 12px;
+    float: right;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(200,200,200,0.6);
+    color: black;
+  }
+
+  md-content {
+    padding-bottom: 60px;
+  }
+
   footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     float: right;
+    padding-right: 18px;
 
     .md-fab {
       float: right;
+      z-index: 10;
     }
   }
 }

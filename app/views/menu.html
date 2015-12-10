@@ -8,12 +8,13 @@
         <md-card ng-repeat="item in restaurant.menu">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline"><span class="badge">${{item.price}}</span>{{item.name}}</span>
+                    <span class="md-headline">{{item.name}}</span>
+                    <span class="badge">${{item.price}}</span>
                     <span class="md-subhead">{{item.description}}</span>
                 </md-card-title-text>
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-fab md-raised md-primary"
+                <md-button class="md-fab md-raised md-secondary"
                            ng-click="showAdvancedItemInfo($event, item)"
                            aria-label="Open menu item info"><i class="fa fa-info fa-2x"></i></md-button>
                 <md-button class="md-fab md-raised md-primary"
