@@ -238,7 +238,7 @@ angular.module('bellhappApp')
     }
 
 
-    function CartDialogController($scope, $mdDialog, $firebaseArray, rootRef, $stateParams) {
+    function CartDialogController($scope, $mdDialog, $firebaseArray, $firebaseObject, rootRef, $stateParams) {
         $scope.hide = function() {
             $mdDialog.hide();
         };
@@ -249,12 +249,23 @@ angular.module('bellhappApp')
             $mdDialog.hide(answer);
         };
 
+        $scope.restaurant = $stateParams.restaurantid;
+        $scope.table = $stateParams.tableid;
+
         //eventually adding the cart to the list of orders in firebase
         $scope.orders = $firebaseArray(rootRef.child('restaurants').child($stateParams.restaurantid).child('orders'));
+
+        $scope.feed = $firebaseArray(rootRef.child("restaurants").child($stateParams.restaurantid).child("feed"));
+
+        var obj = $firebaseObject(rootRef.child('restaurants').child($stateParams.restaurantid).child('tables').child($scope.table));
+        $scope.tableRef = obj;
+        obj.$bindTo($scope, "tableRef");
 
         //getting the items added to cart from local storage
 
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
+
+
 
 
         //total cost of cart items
@@ -302,11 +313,18 @@ angular.module('bellhappApp')
                     price: item.price,
                     fulfilled: false
                 });
+                $scope.feed.$add({
+                    alertType: "alert-danger alert-custom",
+                    close: false,
+                    data: "an order",
+                    tableNum: $scope.table
+                });
+                $scope.tableRef.orders = $scope.tableRef.orders + 1;
             });
+            localStorage.clear();
         };
 
-        $scope.restaurant = $stateParams.restaurantid;
-        $scope.table = $stateParams.tableid;
+
 
 
     }

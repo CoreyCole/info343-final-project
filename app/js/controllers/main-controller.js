@@ -30,17 +30,28 @@ angular.module('bellhappApp')
         });
 
         $scope.populate = function() {
-            restaurantsRef.child("-K4bMCBfJkqlgK1LTNPz").child("menu").push({
-                "compliments": [ "Kid's Pancake", "Coffee", "House-made Bread" ],
-                "description": "A colorful selection of our freshest fruit",
-                "ingreedients": {
-                    "commonAlergens": [ "wheat", "nuts" ],
-                    "gluttenFree": false,
-                    "ingreedientsList": [ "grapes", "oranges", "bananas", "strawberries" ]
-                },
-                "name": "SIDE OF FRESH FRUIT",
-                "price": 4
+            restaurantsRef.child("-K4bMCBfJkqlgK1LTNPz").child('tables').push({
+                check: false,
+                color: "rgba(255,0,0,0.3)",
+                drinks: false,
+                number: 7,
+                orders: 0,
+                signal: false,
+                x: 160,
+                y: 200
             });
+
+            //restaurantsRef.child("-K4bMCBfJkqlgK1LTNPz").child("menu").push({
+            //    "compliments": [ "Kid's Pancake", "Coffee", "House-made Bread" ],
+            //    "description": "A colorful selection of our freshest fruit",
+            //    "ingreedients": {
+            //        "commonAlergens": [ "wheat", "nuts" ],
+            //        "gluttenFree": false,
+            //        "ingreedientsList": [ "grapes", "oranges", "bananas", "strawberries" ]
+            //    },
+            //    "name": "SIDE OF FRESH FRUIT",
+            //    "price": 4
+            //});
             //restaurantsRef.push({
             //    "food": "Organic",
             //    "location": "4130 Roosevelt Way NE Seattle, WA 98105",
