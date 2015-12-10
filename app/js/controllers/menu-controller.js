@@ -12,9 +12,11 @@ angular.module('bellhappApp')
         $scope.table = table;
         table.$bindTo($scope, "table");
 
+        $scope.restaurantID = $stateParams.restaurantid;
+
         // cart[objects] where objects is coffee type, quantity, base price
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
-        console.log($scope.cart);
+
 
         $scope.addToCart = function(name, price, quantity, wanted) {
             $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
@@ -145,33 +147,6 @@ angular.module('bellhappApp')
             });
 
         };
-
-        $scope.populate1 = function() {
-            rootRef.child("restaurants").child("menu").push({
-                name: "",
-                description: "",
-                price: 5,
-                compliments: [
-                    "ID1",
-                    "ID2",
-                    "ID3"
-                ],
-                ingreedients: {
-                    gluttenFree: false,
-                    commonAlergens: [
-                        "wheat",
-                        "nuts"
-                    ],
-                    ingreedientsList : [
-                        "flour",
-                        "milk",
-                        "eggs",
-                        "water",
-                        "high fructose corn syrup"
-                    ]
-                }
-            });
-        };
     });
     
     function ItemDialogController($scope, $mdDialog, $mdMedia, $mdToast, $animate) {
@@ -202,7 +177,6 @@ angular.module('bellhappApp')
       //    .join(' ');
       //};
 
-        console.log($scope.menuItemFocus);
 
         $scope.hide = function() {
             $mdDialog.hide();
@@ -216,7 +190,6 @@ angular.module('bellhappApp')
 
         $scope.showIngredientItemInfo = function(ev, item) {
             $scope.menuItemFocus = item;
-            console.log($scope.menuItemFocus);
             $mdDialog.show({
                 controller: ItemIngredientsDialogController,
                 templateUrl: 'views/ingredients-info.html',
@@ -289,10 +262,7 @@ angular.module('bellhappApp')
 
         //cost before tax to use to calculate tax
         function calculate() {
-            console.log('cost before tax');
-            console.log($scope.cart);
             $scope.cart.forEach(function (item) {
-                console.log(item.price + " * " + item.quantity);
                 preTax += item.price * item.quantity; //multiplying total cost of each item
             });
             $scope.tax = tax(preTax);
@@ -300,7 +270,6 @@ angular.module('bellhappApp')
 
         //calculate the tax
         function tax(preTax){
-            console.log('tax');
             var tax = preTax * 0.095; //sales tax right now is 9.5%
             $scope.total = preTax + tax;
             return tax;
@@ -316,19 +285,18 @@ angular.module('bellhappApp')
                     price: item.price,
                     fulfilled: false
                 });
+
                 $scope.feed.$add({
                     alertType: "alert-danger alert-custom",
                     close: false,
                     data: "an order",
-                    tableNum: $scope.table
+                    tableNum: $scope.tableRef.number,
+                    tableID: $scope.table,
+                    size: $scope.cart.length
                 });
-                $scope.tableRef.orders = $scope.tableRef.orders + 1;
+                $scope.tableRef.orders = parseInt($scope.tableRef.orders) + 1;
             });
             localStorage.clear();
         };
-
-
-
-
     }
 

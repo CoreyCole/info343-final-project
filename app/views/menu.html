@@ -1,5 +1,6 @@
 <div class="menu" ng-controller="MenuCtrl">
     <md-toolbar class="md-theme-light" ng-click="populate1()">
+        <i ui-sref="restaurant-profile({restaurantid: restaurantID})" class="fa fa-arrow-left"></i>
         <h1 class="md-toolbar-tools">
             <span>{{restaurant.name}} Menu</span>
         </h1>
