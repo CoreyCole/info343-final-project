@@ -14,6 +14,10 @@ angular.module('bellhappApp')
 
         $scope.refreshAll();
 
+        $scope.viewRestaurant = function(restaurant) {
+            $state.go('restaurant-profile', {restaurantid: restaurant.$id});
+        };
+
         $scope.results.$loaded().then(function() {
             var count = 0;
             angular.forEach($scope.results, function(restaurant) {

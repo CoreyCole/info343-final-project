@@ -22,7 +22,7 @@ angular.module('bellhappApp')
                 controller: 'RestaurantProfileCtrl'
             })
             .state('menu', {
-                url: '/menu/:restaurantid',
+                url: '/menu/:restaurantid/:tableid',
                 templateUrl: 'views/menu.html',
                 controller: 'MenuCtrl'
             })

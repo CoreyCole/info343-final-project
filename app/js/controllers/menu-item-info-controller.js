@@ -5,7 +5,7 @@
  */
 angular.module('bellhappApp')
 
-  .constant('cart', 'cartKey')
+  .constant('cart', 'cart')
   .controller('MenuItemInfoCtrl', function ($scope, $mdDialog, cart, $mdToast, $animate) {
       
 
