@@ -5,13 +5,22 @@
   padding-top: 160px;
   padding-bottom: 160px;
 
+  background-image: url(../img/search.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  font-family: $font;
+
   h1 {
     margin-bottom: 20px;
-    font-family: 'Lato';
+    color: #FFF;
+    font-weight: bold;
   }
 
   .search-btn {
     width: 190px;
     margin-top: 20px;
+    font-weight: bold;
   }
 }

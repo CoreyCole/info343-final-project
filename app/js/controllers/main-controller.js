@@ -9,13 +9,11 @@ angular.module('bellhappApp')
 
         $scope.restaurants = $firebaseArray(restaurantsRef);
 
+        $scope.screen = window.innerHeight;
+
         $scope.search = function(location, food, name) {
             $state.go('search-results', {location: location, food: food, name:name});
         };
-
-        //$scope.selectedLocation = "";
-        //$scope.selectedFood = "";
-        //$scope.selectedName = "";
 
         var locations = [];
         var names = [];

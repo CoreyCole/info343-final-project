@@ -266,8 +266,6 @@ angular.module('bellhappApp')
         $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
 
 
-
-
         //total cost of cart items
         var preTax = 0;
         $scope.tax = 0;
