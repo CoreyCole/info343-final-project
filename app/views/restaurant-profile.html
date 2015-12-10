@@ -1,16 +1,32 @@
-<div class="restaurant-profile" ng-controller="RestaurantProfileCtrl">
-    <div class="current-rest" layout="column">
-        <div class="current-picture"><img ng-src="{{pictureUrl}}" alt="Description" />
+<div ng-controller="RestaurantProfileCtrl" ng-cloak>
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
+        <div flex="50" layout="column">
+            <md-card ng-click="viewRestaurant(restaurant)"
+                     ng-show="restaurant.show">
+                <img ng-src="{{pictureUrl}}" class="md-card-image" alt="Washed Out" id="restImg">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{restaurant.name}}</span>
+                        <span class="md-subhead">{{restaurant.food}} Restaurant</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>{{restaurant.description}}</p>
+                </md-card-content>
+                <md-card-content>
+                    <span>{{avgRating}}</span>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="viewMenu(restaurant)"
+                               class="md-accent"
+                               id="viewMenu">Menu
+                    </md-button>
+                    <md-button ng-click="backToSearch()"
+                               class="btn btn-primary"
+                               id="viewRest">Back to Search
+                    </md-button>
+                </md-card-actions>
+            </md-card>
         </div>
-        <div class="prof" layout="column">
-            <span>{{name}}</span>
-            <span>{{avgRating}}</span>
-        </div>
-        <div class="links"></div>
-        <div class="suggested"></div>
-        <button ng-click="backToSearch()"
-                class="btn btn-primary"
-                id="viewRest">Back to Search
-        </button>
-    </div>
+    </md-content>
 </div>

@@ -48,6 +48,10 @@ angular.module('bellhappApp')
         $scope.backToSearch = function(){
             $scope.refreshAll();
             $state.go('search-results');
+        };
+
+        $scope.viewMenu = function(restaurant){
+            $state.go('menu', {restaurantid: restaurant.$id, tableid: "-K5CoCIZGX_y52JZeYZR"});
         }
 
     });
