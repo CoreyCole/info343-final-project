@@ -62,7 +62,27 @@
       display: inline-block;
       padding-top: 0.5em;
       padding-left: 1em;
+      font-size: 14px;
     }
+  }
+
+  div.price {
+    width: 80%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+
+    h3.ng-binding {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  div.gluten {
+    margin-left: 1em;
+  }
+
+  p.ng-binding {
+    margin-right: 3em;
   }
 
   h3.ng-binding {
@@ -70,4 +90,7 @@
     font-size: 20px;
   }
 
+  md-list-item, md-list-item .md-list-item-inner {
+    min-height: 10px;
+  }
 }
