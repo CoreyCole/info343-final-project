@@ -1,6 +1,10 @@
 @import 'base';
 
 .menu {
+  .md-toolbar {
+    display: inline;
+  }
+
   md-card {
     padding: 10px;
     background-color: rgba(200,200,200,0.3);
