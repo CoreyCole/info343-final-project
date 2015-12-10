@@ -5,10 +5,6 @@
   h1 {
       color: $primary-color;
     } 
-    
-    div.col-xs-6.col-sm-4 {
-      text-align: center;
-    }
 
     li {
       font-size: 115%;
@@ -38,15 +34,11 @@
   }
 
   span.ng-scope {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .md-tab {
     float: none;
-  }
-
-  h2.ng-binding {
-
   }
 
   .addBtn {
@@ -61,6 +53,21 @@
     background-color: black;
       float: right;
     }
+  }
+  div.nameAndItem {
+    display: block;
+    width: 100%;
+
+    h2.ng-binding {
+      display: inline-block;
+      padding-top: 0.5em;
+      padding-left: 1em;
+    }
+  }
+
+  h3.ng-binding {
+    font-family: Lato;
+    font-size: 20px;
   }
 
 }

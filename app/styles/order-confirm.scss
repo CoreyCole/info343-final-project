@@ -1,5 +1,33 @@
 @import 'base';
 
-.order-confirm {
+body {
+  background-image: url('../img/order-confirm.jpg');
+  //background-color: rgb(255, 255, 255, 0.9);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
+  font-family: $font;
+}
+
+h2{
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+#confirm-copy{
+  text-align: center;
+  padding-top: 150px;
+}
+
+.return{
+  height: 44px;
+
+  //span{
+  //  text-align: center;
+  //  padding-top: 15px;
+  //  padding-bottom: 15px;
+  //}
 }

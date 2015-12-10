@@ -11,36 +11,43 @@ angular.module('bellhappApp')
         $scope.currentTableRef = currentTableRef;
 
         $scope.dismiss = function(notification) {
-            if (notification.data === "assistance") {
+            if (notification.data === "help") {
                 dismissSignal(notification);
             } else if (notification.data === "drinks") {
                 dismissDrinks(notification);
             } else if (notification.data === "check") {
                 dismissCheck(notification);
             }
-        }
+        };
 
         function dismissSignal(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                signal: false
-            });
-        };
+            $scope.tables.$getRecord(notification.tableID).signal = false;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+        }
 
         function dismissDrinks(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                drinks: false
-            });
-        };
+            $scope.tables.$getRecord(notification.tableID).drinks = false;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+            //notification.closed = true;
+            //$scope.feed.$save(notification);
+            //currentTableRef.update({
+            //    drinks: false
+            //});
+        }
 
         function dismissCheck(notification) {
             notification.closed = true;
             $scope.feed.$save(notification);
-            currentTableRef.update({
-                check: false
-            });
-        };
+            $scope.tables.$getRecord(notification.tableID).check = false;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+            //notification.closed = true;
+            //$scope.feed.$save(notification);
+            //currentTableRef.update({
+            //    check: false
+            //});
+        }
     });

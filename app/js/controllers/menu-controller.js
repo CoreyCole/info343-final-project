@@ -4,8 +4,92 @@
  * # MenuCtrl
  */
 angular.module('bellhappApp')
-    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, testRestaurantRef, $firebaseObject, rootRef) {
-        $scope.restaurant = $firebaseObject(testRestaurantRef);
+    .controller('MenuCtrl', function ($scope, $mdDialog, $mdMedia, $mdToast, $stateParams, testRestaurantRef, $firebaseObject, $firebaseArray, rootRef) {
+        $scope.restaurant = $firebaseObject(rootRef.child("restaurants").child($stateParams.restaurantid));
+        $scope.feed = $firebaseArray(rootRef.child("restaurants").child($stateParams.restaurantid).child("feed"));
+        var tableRef = rootRef.child("restaurants").child($stateParams.restaurantid).child("tables").child($stateParams.tableid);
+        var table = $firebaseObject(rootRef.child("restaurants").child($stateParams.restaurantid).child("tables").child($stateParams.tableid));
+        $scope.table = table;
+        table.$bindTo($scope, "table");
+
+        // cart[objects] where objects is coffee type, quantity, base price
+        $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
+
+        $scope.addToCart = function(name, price, quantity, wanted) {
+            $mdToast.show($mdToast.simple().
+                content('This ' + name.name + ' has been added to your cart!').position($scope.getMsgPosition())
+                .hideDelay(5000));
+            $scope.cart.push({name: name.name, price: name.price, quantity: 1});
+            localStorage.setItem('cart', angular.toJson($scope.cart));
+        };
+
+        // saves the cart with the product information to the localstorage.
+        // cart auto updates.
+        $scope.addMenuItem = function(name, price, quantity, wanted) {
+            $mdToast.show($mdToast.simple().
+                content('This ' + name + ' has been added to your cart!').position($scope.getMsgPosition())
+                .hideDelay(5000));
+            $scope.cart.push({name: name, price: price, quantity: quantity});
+            localStorage.setItem('cart', angular.toJson($scope.cart));
+        };
+
+        $scope.toastPosition = {
+            bottom: false,
+            top: true,
+            left: false,
+            right: true
+        };
+
+        $scope.getMsgPosition = function() {
+            return Object.keys($scope.toastPosition)
+                .filter(function(pos) { return $scope.toastPosition[pos]; })
+                .join(' ');
+        };
+
+        $scope.order = function(menuItemId) {
+            tableRef.child("orders").transaction(function(current_value) {
+                return current_value + 1;
+            });
+        };
+
+        $scope.sendHelpSignal = function() {
+            if (!$scope.table.signal) {
+                $scope.feed.$add({
+                    tableNum: $scope.table.number,
+                    tableID: $scope.table.$id,
+                    data: "help",
+                    alertType: "alert-danger",
+                    closed: false
+                });
+                $scope.table.signal = true;
+            }
+        };
+
+        $scope.sendDrinksSignal = function() {
+            if (!$scope.table.drinks) {
+                $scope.feed.$add({
+                    tableNum: $scope.table.number,
+                    tableID: $scope.table.$id,
+                    data: "drinks",
+                    alertType: "alert-info",
+                    closed: false
+                });
+                $scope.table.drinks = true;
+            }
+        };
+
+        $scope.sendCheckSignal = function() {
+            if (!$scope.table.check) {
+                $scope.feed.$add({
+                    tableNum: $scope.table.number,
+                    tableID: $scope.table.$id,
+                    data: "check",
+                    alertType: "alert-success",
+                    closed: false
+                });
+                $scope.table.check = true;
+            }
+        };
 
         $scope.openMenu = function($mdOpenMenu, ev) {
             $mdOpenMenu(ev);
@@ -89,31 +173,31 @@ angular.module('bellhappApp')
     
     function ItemDialogController($scope, $mdDialog, $mdMedia, $mdToast, $animate) {
 
-       // cart[objects] where objects is coffee type, quantity, base price
-        $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
-
-      // saves the cart with the product information to the localstorage. 
-      // cart auto updates.  
-      $scope.addMenuItem = function(name, price, quantity, wanted) {
-          $mdToast.show($mdToast.simple().
-            content('This ' + name + ' has been added to your cart!').position($scope.getMsgPosition())
-            .hideDelay(5000));
-          $scope.cart.push({name: name, price: price, quantity: quantity});
-          localStorage.setItem('cart', angular.toJson($scope.cart));
-      };
-
-      $scope.toastPosition = {
-        bottom: false,
-        top: true,
-        left: false,
-        right: true
-      };
-
-      $scope.getMsgPosition = function() {
-        return Object.keys($scope.toastPosition)
-          .filter(function(pos) { return $scope.toastPosition[pos]; })
-          .join(' ');
-      };
+      // // cart[objects] where objects is coffee type, quantity, base price
+      //  $scope.cart = angular.fromJson(localStorage.getItem('cart')) || [];
+      //
+      //// saves the cart with the product information to the localstorage.
+      //// cart auto updates.
+      //$scope.addMenuItem = function(name, price, quantity, wanted) {
+      //    $mdToast.show($mdToast.simple().
+      //      content('This ' + name + ' has been added to your cart!').position($scope.getMsgPosition())
+      //      .hideDelay(5000));
+      //    $scope.cart.push({name: name, price: price, quantity: quantity});
+      //    localStorage.setItem('cart', angular.toJson($scope.cart));
+      //};
+      //
+      //$scope.toastPosition = {
+      //  bottom: false,
+      //  top: true,
+      //  left: false,
+      //  right: true
+      //};
+      //
+      //$scope.getMsgPosition = function() {
+      //  return Object.keys($scope.toastPosition)
+      //    .filter(function(pos) { return $scope.toastPosition[pos]; })
+      //    .join(' ');
+      //};
 
         console.log($scope.menuItemFocus);
 
@@ -153,7 +237,8 @@ angular.module('bellhappApp')
         };
     }
 
-    function CartDialogController($scope, $mdDialog,  $firebaseArray, rootRef, $stateParams) {
+
+    function CartDialogController($scope, $mdDialog, $firebaseArray, rootRef, $stateParams) {
         $scope.hide = function() {
             $mdDialog.hide();
         };
