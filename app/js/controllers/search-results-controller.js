@@ -15,6 +15,7 @@ angular.module('bellhappApp')
         $scope.refreshAll();
 
         $scope.viewRestaurant = function(restaurant) {
+            $scope.setRest(restaurant);
             $state.go('restaurant-profile', {restaurantid: restaurant.$id});
         };
 
@@ -48,7 +49,7 @@ angular.module('bellhappApp')
 
             $scope.viewRest = function(restaurant){
                 $scope.setRest(restaurant);
-                $state.go('restaurant-profile');
+                $state.go('restaurant-profile', {restaurantid: restaurant.$id});
             };
         });
     });
