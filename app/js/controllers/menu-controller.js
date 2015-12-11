@@ -286,7 +286,7 @@ angular.module('bellhappApp')
 
                 $scope.feed.$add({
                     alertType: "alert-danger alert-custom",
-                    close: false,
+                    closed: false,
                     data: "order",
                     tableNum: $scope.tableRef.number,
                     tableID: $scope.table,
