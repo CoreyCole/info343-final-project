@@ -39,12 +39,14 @@ angular.module('bellhappApp')
             $scope.chosenRest = angular.fromJson(localStorage.getItem(restKey)) || [];
             console.log($scope.chosenRest);
 
-
-
             $scope.setRest = function(restaurant){
                 $scope.chosenRest =  restaurant;
                 console.log($scope.chosenRest);
                 localStorage.setItem('chosenRest', angular.toJson($scope.chosenRest));
+            };
+
+            $scope.backToMenu = function(){
+                $state.go('main');
             };
 
             $scope.viewRest = function(restaurant){

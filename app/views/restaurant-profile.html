@@ -16,15 +16,19 @@
                 <md-card-content>
                     <span>{{avgRating}}</span>
                 </md-card-content>
+                <md-card-content>
+                    <span>{{restaurant.phone}}</span>
+                </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ng-click="viewMenu(restaurant)"
-                               class="md-accent"
-                               id="viewMenu">Menu
-                    </md-button>
                     <md-button ng-click="backToSearch()"
                                class="btn btn-primary"
                                id="viewRest">Back to Search
                     </md-button>
+                    <md-button ng-click="viewMenu(restaurant)"
+                               class="md-accent"
+                               id="viewMenu">Menu
+                    </md-button>
+
                 </md-card-actions>
             </md-card>
         </div>
