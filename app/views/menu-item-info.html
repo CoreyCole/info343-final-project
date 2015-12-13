@@ -1,41 +1,54 @@
-<div class="menu-item-info" ng-controller="MenuItemInfoCtrl" ng-cloak>
-    <md-content>
-	    <md-list>
-		    <md-list-item class="col-md-9 col-md-offset-2" ng-repeat="item in products">
-			    <div layout="column" layout-align="center">
-			    	<md-subheader class="md-no-sticky">restaraunt.name</md-subheader>
-			    	<div class="md-list-item-text" layout="row" layout-align="center left">
-		        		<h1> {{ item.name }} </h1>
-		        		<h2> ${{item.price}} </h2>
-		        	</div>
-		        	<div class="md-list-item-text" layout="row" layout-align="center left">
-		        		<h3> {{ item.description }} </h3>
-		        	</div>
-		       		<md-divider></md-divider>
-					<div class="md-list-item-next" layout="row" layout-align="center center">
-						<h3>Goes well with:</h3>
-					</div>
-					<div class="md-list-item-text" >
-		        		<md-list-item ng-repeat="topping in toppings" >
-					   	<li> {{ topping.name }} </li>
-					   	<md-checkbox class="md-secondary" ng-model="topping.wanted" aria-label="checkForMore"></md-checkbox>
-			    		</md-list-item>
-		        	</div>
-		        	<br></br>
-		        	<md-divider ></md-divider>
-		        	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-			       		<div class="col-xs-6 col-sm-4">
-				       		<md-button class="md-raised md-primary" ui-sref="ingredients-info()">Ingredients</md-button>
-			       		</div>
-			       		<div class="col-xs-6 col-sm-4">
-			       			<md-button class="md-accent md-raised md-hue-1" name="favBtn">Favorite</md-button>
-			       		</div>
-			       		<div class="col-xs-6 col-sm-4">
-				       		<md-button class="md-raised md-warn" ng-click="addMenuItem(item.name, item.price, 1, topping.wanted)" >Add</md-button>
-			       		</div>
-			       	</section>
-		        </div> 
-		    </md-list-item>  
-		</md-list>
-	</md-content>
-</div>
+<md-dialog aria-label="menuItemFocus Info" class="menu-item-info">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<div class="nameAndItem">
+					<h2> {{menuItemFocus.name}} </h2>
+				</div>
+				<span flex></span>
+				<md-button aria-label="exit tab" class="md-icon-button" ng-click="cancel()">
+					<i class="fa fa-times fa-lg"></i>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="max-width:1000px;max-height:850px; ">
+			<md-tabs md-swipe-content="true" md-dynamic-height md-border-bottom>
+				<md-tab label="description">
+					<md-content class="md-padding">
+						<div layout="column" layout-align="center">
+							<div class="md-list-menuItemFocus-text" layout="row" layout-align="center left">
+								<div class="price">
+									<h3> ${{menuItemFocus.price}} </h3>
+								</div>
+								<div class="description">
+									<h3> {{menuItemFocus.description}} </h3>
+								</div>
+							</div>
+						</div>
+					</md-content>
+				</md-tab>
+				<md-tab label="ingredients">
+					<md-content class="md-padding">
+						<div class="md-list-item-text" >
+							<md-list-item ng-repeat="item in menuItemFocus.ingreedients.commonAlergens" >
+								<div class="allergen">
+									<p> Allergen: {{ item }}</p>
+								</div>
+							</md-list-item>
+							<div class="gluten">
+								<p>Gluten: {{menuItemFocus.ingreedients.gluttenFree}}</p>
+							</div>
+							<md-list-item ng-repeat="item in menuItemFocus.ingreedients.ingreedientsList" >
+								<p> {{ item }} </p>
+							</md-list-item>
+						</div>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-dialog-content>
+		<div class="addBtn">
+			<md-button class="md-fab md-raised md-primary" ng-click="addMenuItem(menuItemFocus.name, menuItemFocus.price, 1)" aria-label="Add item to cart"><i class="fa fa-plus fa-2x"></i>
+			</md-button>
+		</div>
+	</form>
+</md-dialog>
