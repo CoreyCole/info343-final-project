@@ -20,8 +20,8 @@ angular.module('bellhappApp')
             $scope.ratings = Object
                 .keys($scope.ratings)
                 .map(function (key) {
-                return $scope.ratings[key]
-            });
+                    return $scope.ratings[key]
+                });
             console.log($scope.ratings);
 
             $scope.avgRating = 0;
@@ -54,4 +54,4 @@ angular.module('bellhappApp')
             $state.go('menu', {restaurantid: restaurant.$id, tableid: "-K5CoCIZGX_y52JZeYZR"});
         }
 
-    });
+});

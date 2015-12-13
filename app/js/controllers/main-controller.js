@@ -23,6 +23,8 @@ angular.module('bellhappApp')
             });
         });
 
+        console.log(food);
+
         //changes the view to the search results page given the inputs
         $scope.search = function(location, food, name) {
             $state.go('search-results', {location: location, food: food, name:name});
