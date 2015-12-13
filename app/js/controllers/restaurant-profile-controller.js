@@ -4,8 +4,23 @@
  * # RestaurantProfileCtrl
  */
 angular.module('bellhappApp')
-    .controller('RestaurantProfileCtrl', function(firebaseUrl, $firebaseArray, $scope, rootRef, testRestaurantRef, restKey, $state) {
+    .controller('RestaurantProfileCtrl', function(firebaseUrl, $firebaseArray, $scope, rootRef,
+                                                  testRestaurantRef, restKey, $state, $firebaseObject,
+                                                  restaurantsRef,  $stateParams) {
 
+        $scope.restaurants = $firebaseArray(restaurantsRef);
+        console.log($scope.restaurants);
+
+        $scope.restaurantid = $stateParams.restaurantid;
+        console.log($scope.restaurantid);
+
+        $scope.restaurant = $scope.restaurants.$getRecord($scope.restaurantid);
+        console.log($scope.restaurant);
+
+        $scope.restaurants.$loaded().then(function() {
+            $scope.restaurant = $scope.restaurants.$getRecord($scope.restaurantid);
+            console.log($scope.restaurant);
+        });
         $scope.renderAll = function(){
             $scope.restaurant = angular.fromJson(localStorage.getItem(restKey)) || [];
             console.log($scope.restaurant);
