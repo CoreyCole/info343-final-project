@@ -273,6 +273,7 @@ angular.module('bellhappApp')
             return tax;
         }
 
+        //
         $scope.saveOrder = function(){
             $scope.cancel();
             $scope.cart.forEach(function (item){

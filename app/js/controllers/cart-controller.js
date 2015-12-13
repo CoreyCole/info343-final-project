@@ -47,6 +47,7 @@ angular.module('bellhappApp')
             return total + tax;
         };
 
+        //saves the order from local storage to firebase
         $scope.saveOrder = function(){
             $scope.cart.forEach(function (item){
                 $scope.orders.$add({
