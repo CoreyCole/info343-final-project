@@ -19,11 +19,16 @@
       color: #fd0;
     }
   }
-
   &.readonly .star.filled {
     color: #666;
   }
 }
 #restImg{
   height: 500px;
+}
+.md-content {
+  font-size: 15px;
+}
+.i{
+  font-size: 18px;
 }

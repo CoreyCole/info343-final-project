@@ -49,6 +49,10 @@ angular.module('bellhappApp')
                 total += rating.score;
             });
             $scope.avgRating = total / Math.round($scope.allReviews.length);
+            $scope.stars = [];
+            for ( var i = 0; i < $scope.avgRating; i++) {
+                $scope.stars.push(1);
+            }
             $scope.showContent();
         };
 
