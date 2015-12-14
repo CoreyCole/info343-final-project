@@ -18,7 +18,7 @@ angular.module('bellhappApp')
                 dismissDrinks(notification);
             } else if (notification.data === "check") {
                 dismissCheck(notification);
-            } else if (notification.data === "an order") {
+            } else if (notification.data === "order") {
                 dismissOrder(notification);
             }
         };
