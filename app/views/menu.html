@@ -1,6 +1,7 @@
 <div class="menu" ng-controller="MenuCtrl">
     <md-toolbar class="md-theme-light" ng-click="populate1()">
         <h1 class="md-toolbar-tools">
+            <i ui-sref="restaurant-profile({restaurantid: restaurantID})" class="fa fa-arrow-left"></i>
             <span>{{restaurant.name}} Menu</span>
         </h1>
     </md-toolbar>
@@ -14,12 +15,12 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-fab md-raised md-secondary"
+                <md-button id="info" class="md-fab md-raised md-secondary"
                            ng-click="showAdvancedItemInfo($event, item)"
                            aria-label="Open menu item info"><i class="fa fa-info fa-2x"></i></md-button>
-                <md-button class="md-fab md-raised md-primary"
+                <md-button id="add" class="md-fab md-raised md-primary"
                            ng-click="addToCart(item)"
-                           aria-label="Add item to cart"><i class="fa fa-cart-arrow-down fa-2x"></i></md-button>
+                           aria-label="Add item to cart"><i class="fa fa-plus fa-2x"></i></md-button>
             </md-card-actions>
         </md-card>
     </md-content>

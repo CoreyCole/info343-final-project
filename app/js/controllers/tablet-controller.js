@@ -11,14 +11,25 @@ angular.module('bellhappApp')
         $scope.currentTableRef = currentTableRef;
 
         $scope.dismiss = function(notification) {
+            console.log(notification.data);
             if (notification.data === "help") {
                 dismissSignal(notification);
             } else if (notification.data === "drinks") {
                 dismissDrinks(notification);
             } else if (notification.data === "check") {
                 dismissCheck(notification);
+            } else if (notification.data === "order") {
+                dismissOrder(notification);
             }
         };
+
+        function dismissOrder(notification) {
+            notification.closed = true;
+            $scope.feed.$save(notification);
+            console.log(notification.tableID);
+            $scope.tables.$getRecord(notification.tableID).orders = $scope.tables.$getRecord(notification.tableID).orders - 1;
+            $scope.tables.$save($scope.tables.$getRecord(notification.tableID));
+        }
 
         function dismissSignal(notification) {
             notification.closed = true;

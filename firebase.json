@@ -1,0 +1,9 @@
+{
+  "firebase": "info343-final",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
