@@ -1,0 +1,28 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+html, body {
+  width: 100%;
+  padding: 0;
+  margin: 0; }
+
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block; }
+  .star-rating .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: .05em .05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer; }
+    .star-rating .star.filled {
+      color: #fd0; }
+  .star-rating.readonly .star.filled {
+    color: #666; }
+
+#restImg {
+  height: 500px; }
+
+/*# sourceMappingURL=restaurant-profile.css.map */

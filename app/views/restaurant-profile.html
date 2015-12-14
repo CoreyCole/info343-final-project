@@ -1,13 +1,22 @@
-<div ng-controller="RestaurantProfileCtrl" ng-cloak>
-    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
+<div ng-controller="RestaurantProfileCtrl" ng-app="profileApp"  ng-cloak>
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start "
+                ng-model="restaurant" id="allcontent">
         <div flex="50" layout="column">
             <md-card ng-click="viewRestaurant(restaurant)"
-                     ng-show="restaurant.show">
+                      ng-model="restaurant">
                 <img ng-src="{{pictureUrl}}" class="md-card-image" alt="Washed Out" id="restImg">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{restaurant.name}}</span>
                         <span class="md-subhead">{{restaurant.food}} Restaurant</span>
+                        <i class="fa fa-map-marker"></i>
+                        <span>{{restaurant.location}}</span>
+                        <div ng-app="app" ng-model="avgRating" class="container">
+                            <i class="fa fa-star-o" ng-repeat="star in stars"></i>
+                            <div><strong>Avg Rating:</strong>{{avgRating}}</div>
+                        </div>
+                        <i class="fa fa-phone"></i>
+                        <span>{{restaurant.phone}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
@@ -17,18 +26,19 @@
                     <span>{{avgRating}}</span>
                 </md-card-content>
                 <md-card-content>
-                    <span>{{restaurant.phone}}</span>
+
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button ng-click="backToSearch()"
                                class="btn btn-primary"
-                               id="viewRest">Back to Search
+                               id="viewRest">
+                        <i class="fa fa-arrow-left"></i> Back to Search
                     </md-button>
                     <md-button ng-click="viewMenu(restaurant)"
                                class="md-accent"
-                               id="viewMenu">Menu
+                               id="viewMenu">
+                        <i class="fa fa-cutlery"></i>
                     </md-button>
-
                 </md-card-actions>
             </md-card>
         </div>
