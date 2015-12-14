@@ -7,15 +7,8 @@ angular.module('bellhappApp')
     .controller('SearchResultsCtrl', function ($scope, $state, $stateParams, $firebaseArray, rootRef, restKey) {
         $scope.results = $firebaseArray(rootRef.child("restaurants"));
 
-        $scope.refreshAll = function(){
-            $scope.chosenRest = {};
-            localStorage.setItem('chosenRest', angular.toJson($scope.chosenRest));
-        };
-
-        $scope.refreshAll();
 
         $scope.viewRestaurant = function(restaurant) {
-            $scope.setRest(restaurant);
             $state.go('restaurant-profile', {restaurantid: restaurant.$id});
         };
 
@@ -35,15 +28,6 @@ angular.module('bellhappApp')
             if (count === 0) {
                 $scope.errorMessage = "No results found for your query!"
             }
-
-            $scope.chosenRest = angular.fromJson(localStorage.getItem(restKey)) || [];
-            console.log($scope.chosenRest);
-
-            $scope.setRest = function(restaurant){
-                $scope.chosenRest =  restaurant;
-                console.log($scope.chosenRest);
-                localStorage.setItem('chosenRest', angular.toJson($scope.chosenRest));
-            };
 
             $scope.backToMenu = function(){
                 $state.go('main');

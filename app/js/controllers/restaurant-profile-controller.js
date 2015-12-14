@@ -4,69 +4,59 @@
  * # RestaurantProfileCtrl
  */
 angular.module('bellhappApp')
-    .controller('RestaurantProfileCtrl', function(firebaseUrl, $firebaseArray, $scope, rootRef,
-                                                  testRestaurantRef, restKey, $state, $firebaseObject,
-                                                  restaurantsRef,  $stateParams) {
+    .controller('RestaurantProfileCtrl', function (firebaseUrl, $firebaseArray, $scope, rootRef,
+                                                   testRestaurantRef, restKey, $state, $firebaseObject,
+                                                   restaurantsRef, $stateParams) {
 
         $scope.restaurants = $firebaseArray(restaurantsRef);
-        console.log($scope.restaurants);
 
         $scope.restaurantid = $stateParams.restaurantid;
-        console.log($scope.restaurantid);
 
-        $scope.restaurant = $scope.restaurants.$getRecord($scope.restaurantid);
-        console.log($scope.restaurant);
+        $scope.allReviews = [];
 
-        $scope.restaurants.$loaded().then(function() {
-            $scope.restaurant = $scope.restaurants.$getRecord($scope.restaurantid);
-            console.log($scope.restaurant);
-        });
-        $scope.renderAll = function(){
-            $scope.restaurant = angular.fromJson(localStorage.getItem(restKey)) || [];
-            console.log($scope.restaurant);
+        // shows content
+        $scope.showContent = function () {
+            $('#allcontent').show();
+        };
 
+        // hides content
+        $scope.hideContent = function () {
+            $('#allcontent').hide();
+        };
+        $scope.hideContent();
+        $scope.restaurants.$loaded()
+            .then(function () {
+                $scope.restaurant = $scope.restaurants.$getRecord($stateParams.restaurantid);
+                $scope.renderAll($scope.restaurant);
+            });
+
+        $scope.renderAll = function () {
             $scope.pictureUrl = $scope.restaurant.pictureUrl;
             $scope.name = $scope.restaurant.name;
-            console.log($scope.name);
 
             $scope.ratings = $scope.restaurant.ratings;
-            console.log($scope.ratings);
 
             $scope.ratings = Object
                 .keys($scope.ratings)
                 .map(function (key) {
                     return $scope.ratings[key]
                 });
-            console.log($scope.ratings);
 
             $scope.avgRating = 0;
-            var count = 0;
             var total = 0;
-            $scope.ratings.forEach(function(rating){
-                console.log(rating);
-                count ++;
+            $scope.ratings.forEach(function (rating) {
+                $scope.allReviews.push(rating);
                 total += rating.score;
-                console.log(total);
-                $scope.avgRating = total / count;
             });
-            console.log($scope.avgRating);
-
+            $scope.avgRating = total / Math.round($scope.allReviews.length);
+            $scope.showContent();
         };
 
-        $scope.renderAll();
-
-        $scope.refreshAll = function(){
-            $scope.chosenRest = {};
-            localStorage.setItem('chosenRest', angular.toJson($scope.chosenRest));
-        };
-
-        $scope.backToSearch = function(){
-            $scope.refreshAll();
+        $scope.backToSearch = function () {
             $state.go('search-results');
         };
-
-        $scope.viewMenu = function(restaurant){
+        $scope.viewMenu = function (restaurant) {
             $state.go('menu', {restaurantid: restaurant.$id, tableid: "-K5CoCIZGX_y52JZeYZR"});
         }
 
-});
+    });
